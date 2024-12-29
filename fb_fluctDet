@@ -1,0 +1,58 @@
+FUNCTION_BLOCK fb_fluctDet
+VAR_INPUT
+	ri_in : REAL;
+	ri_rocVal: REAL;
+	ri_sampTime: REAL :=0.5;
+	ri_sholdT : REAL :=3.0;
+END_VAR
+VAR_OUTPUT
+	xo_valFluct: BOOL;
+END_VAR
+VAR
+	M : INT;
+	buf : ARRAY[0..4] OF REAL;
+	j : WORD;
+	TONblink: TON;
+	TPblink: TP;
+	N: INT;
+	CTU1: CTU;
+	TONrst: TON;
+	dif1: REAL;
+	dif2: REAL;
+	dif3: REAL;
+	dif4: REAL;
+
+	valFluct: BOOL;
+
+	tcFilt: TIME;
+END_VAR
+
+
+
+
+
+TONblink(IN:=NOT TPblink.Q , PT:=REAL_TO_TIME ( ri_sampTime*1000) , Q=> , ET=> );
+TPblink(IN:=TONblink.Q , PT:= T#500ms, Q=> , ET=> );
+CTU1(
+	CU:=TPblink.Q ,
+	RESET:= CTU1.Q,
+	PV:= 4,
+	Q=> , 
+	CV=> );
+j:=CTU1.CV;
+buf[j] := ri_in;
+
+IF (buf[1]- buf[0]) > 0 THEN dif1 := buf[1]- buf[0]; ELSE dif1 := -(buf[1]- buf[0]); END_IF
+IF (buf[2]- buf[1]) > 0 THEN dif2 := buf[2]- buf[1]; ELSE dif2 := -(buf[2]- buf[1]); END_IF
+IF (buf[3]- buf[2]) > 0 THEN dif3 := buf[3]- buf[2]; ELSE dif3 := -(buf[3]- buf[2]); END_IF
+IF (buf[4]- buf[3]) > 0 THEN dif4 := buf[4]- buf[3]; ELSE dif4 := -(buf[4]- buf[3]); END_IF
+
+TONrst(IN:= NOT valFluct , PT:=REAL_TO_TIME ( ri_sholdT*1000) , Q=> , ET=> );
+
+IF (dif1 > ri_rocVal) OR (dif2 > ri_rocVal) OR(dif3 > ri_rocVal) OR(dif4 > ri_rocVal) THEN valFluct :=1; ELSE valFluct :=0; END_IF
+
+IF (valFluct OR xo_valFluct) AND NOT TONrst.Q THEN xo_valFluct :=1; ELSE  xo_valFluct :=0;  END_IF
+
+
+
+
