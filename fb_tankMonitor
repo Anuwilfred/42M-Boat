@@ -1,0 +1,189 @@
+FUNCTION_BLOCK fb_tankMonitor
+VAR_INPUT
+	wi_sensorVal	: WORD;
+	wi_samplingIn	: ARRAY[0..20] OF  WORD;
+	wi_samplingOut	: ARRAY[0..20] OF  WORD;
+
+	wi_chPara	: WORD;(*0:inhL1, 1:inhL2, 2:inhL3, 3:inhCable break, 4:inhOver range, 5:buz en L1, 6:buz en L2, 7:buz en L3, 8:buz en err1, 9:buz en err2, 10:inhL4, 11:buz en L4, 12: Auto filter enable
+							13:Fill input sensor min value and range when tank empty, 14: Fill input sensor max value and range when tank full*)
+	wi_chParaJm	: WORD;	
+	xi_comErr	:BOOL;
+	xi_ack	:BOOL;
+END_VAR
+VAR_OUTPUT
+	ro_pressOut	:REAL;
+	ro_htOut	:REAL;
+	ro_volOut	:REAL;
+	ro_perOut	:REAL;
+	ro_curOut	:REAL;
+	wo_alarmOut	 : WORD;(*alarm out steady*)
+	wo_alarmOutp	 : WORD;(*alarm out single pulse latched till acknowledge*)
+	xo_buzPulse	: BOOL;
+	xo_ind	:BOOL;
+	wo_alarmMsg	:WORD;(*Alarm msg*)
+	wo_inhTot :WORD;
+END_VAR
+VAR
+	r_sensorValtemp0 : REAL;
+	r_sensorValtemp1 : REAL;
+	r_sensorValtemp2 : REAL;
+	r_sensorValtemp3 : REAL;
+	r_sensorVal	: REAL;
+	r_sensorValtemp	:REAL;
+	w_alarmOutp_temp	 : WORD;
+	ton_delay1	:TON;
+	ton_delay2	:TON;
+	ton_delay3	:TON;
+	ton_delay4	:TON;
+	ton_delay5	:TON;
+	ton_delay6	:TON;
+	tp_almPulse1	:TP;
+	tp_almPulse2	:TP;
+	tp_almPulse3	:TP;
+	tp_almPulse4	:TP;
+	tp_almPulse5	:TP;
+	tp_almPulse6	:TP;
+	x_alarm1Temp1	:BOOL;
+	x_alarm2Temp1	:BOOL;
+	x_alarm3Temp1	:BOOL;
+	x_alarm4Temp1	:BOOL;
+	x_alarm5Temp1	:BOOL;
+	x_alarm6Temp1	:BOOL;
+	LinScale1: fb_linScaleR;
+	LinScale2: fb_linScaleR;
+	r_valOut: REAL;
+	r_pressOut: REAL;
+	NonLinScale1: fb_nonLinScale20;
+	r_volOut	:REAL;
+	r_volOut1	:REAL;
+	r_htOut	:REAL;
+	r_htOut1	:REAL;
+	linScale_r0: fb_linScaleR;
+	filter_SH2: sh_2;
+	fluctDet1: fb_fluctDet;
+END_VAR
+VAR_IN_OUT
+	ri_chSP	: ARRAY[0..23] OF REAL;(*0:L1Lt, 1:L2Lt, 2:L3Lt, 3:L1delay, 4:L2delay, 5:L3delay,6:Errdelay,
+											7:ErrFactor, 8:SensorValMin,9:SensorValMax, 10:SensorRangeMin, 11:SensorRangeMax, 12:filterVal, 
+											13:L4Lt, 14:L4delay, 15:heightMin, 16:heightMax, 17:density, 18:unusable , 19:height offset in mm, 
+											Auto filter-->20: rate of change, 21: sampling time, 22:sample hold time, 23:filter time constant*)
+END_VAR
+
+
+
+
+
+(*fluctDet1(ri_in:=wi_sensorVal , wi_setVal:=1020 , xo_valFluct=> );*)
+fluctDet1(
+	ri_in:=wi_sensorVal ,
+	ri_rocVal:= ri_chSP[20],
+	ri_sampTime:= ri_chSP[21],
+	ri_sholdT:=ri_chSP[22] ,
+	xo_valFluct=> );
+IF fluctDet1.xo_valFluct AND wi_chPara.12 THEN filter_SH2.PT := REAL_TO_TIME ( ri_chSP[23]*1000); ELSE filter_SH2.PT :=REAL_TO_TIME ( ri_chSP[12]*1000); END_IF
+filter_SH2(
+	in:=wi_sensorVal ,
+	PT:= ,
+	N:= 16,
+	disc:=0 ,
+	out=> r_sensorValtemp1,
+	trig=> ,
+	avg=> r_sensorValtemp0,
+	high=> ,
+	low=> );
+IF (fluctDet1.xo_valFluct AND wi_chPara.12) OR (ri_chSP[12] > 0) THEN r_sensorValtemp2:= r_sensorValtemp0; ELSE r_sensorValtemp2:= r_sensorValtemp1; END_IF
+
+IF  r_sensorValtemp1 = 3 THEN r_sensorValtemp3 := 0; ELSE r_sensorValtemp3 :=  r_sensorValtemp2; END_IF(*return to 0 incase of cable break*)
+ro_curOut :=  (20 * r_sensorValtemp3)/4095;(*-->convert  A/D row value to mA-->for 0-20mA input-->	ro_curOut := (20 - 0) / (32760 - 0) * (r_sensorValtemp3 - 0) + 0;*)
+(*-->convert  A/D row value to mA-->for 4-20mA input-->	ro_curOut := (20 - 4) / (32760 - 0) * (r_sensorValtemp3 - 0) + 4;*)
+r_sensorValtemp := ro_curOut* ri_chSP[7]; (*eror compensation*)
+(*method 2 calibration*)
+
+IF wi_chPara.13 THEN ri_chSP[8]:=r_sensorValtemp; ri_chSP[10]:=(ri_chSP[15] * ri_chSP[17] * 9.8066)/1000; END_IF(*Tank empty set*)
+IF wi_chPara.14 THEN ri_chSP[9]:=r_sensorValtemp; ri_chSP[11]:=(ri_chSP[16] * ri_chSP[17] * 9.8066)/1000; END_IF(*Tank full set*)
+(*scale to output value as per output range given*)
+LinScale1(
+	input:= r_sensorValtemp,
+	xmax:= ri_chSP[9],
+	xmin:= ri_chSP[8],
+	ymax:= ri_chSP[11],
+	ymin:= ri_chSP[10],
+	result=> r_pressOut,
+	error=> );
+ro_pressOut:=r_pressOut ;
+
+(*Liquid height = Pressure / ( Liquid density * Gravity)          -> Pressure in pascal*)
+IF ri_chSP[17] > 0 THEN
+r_htOut1 := (ro_pressOut * 1000) / (ri_chSP[17] *9.8066);(*height in mm*)
+ELSE r_htOut1 :=0; END_IF
+
+IF r_htOut1 > 10 AND ri_chSP[19] > 0 THEN r_htOut := r_htOut1 + ri_chSP[19];(*Added height +offset in mm*)
+ELSE IF r_htOut1 >= -ri_chSP[19] AND ri_chSP[19] < 0 THEN r_htOut := r_htOut1 + ri_chSP[19];(*Added height -offset in mm*)
+ELSE IF r_htOut1 < -ri_chSP[19] AND ri_chSP[19] < 0 THEN r_htOut := 0;(*Added height -offset in mm*)
+ELSE r_htOut := r_htOut1; END_IF END_IF END_IF
+IF r_htOut > ri_chSP[16] THEN ro_htOut:=ri_chSP[16];(*Limited to max height*)
+ELSE ro_htOut:=r_htOut ; END_IF
+(*scale to percentage of height *)
+LinScale2(
+	input:= ro_htOut,
+	xmax:= ri_chSP[16],
+	xmin:= ri_chSP[15],
+	ymax:= 100,
+	ymin:= 0,
+	result=> ro_perOut,
+	error=> );
+(*scale as per sounding table*)
+NonLinScale1(
+	input:=ro_htOut ,
+	xval:=wi_samplingIn ,
+	yval:= wi_samplingOut,
+	result=>r_volOut ,
+	error=> );
+IF r_volOut <= ri_chSP[18] AND  ri_chSP[18] > 0  THEN r_volOut1 := 0;
+ELSE r_volOut1 :=  r_volOut - ri_chSP[18]; END_IF
+ro_volOut	:= r_volOut1;
+(*Alarms : level1, level2, ;evel3, cable break, over range, level4*)
+IF ro_perOut < ri_chSP[0]AND NOT(wo_alarmOut.3 OR wo_alarmOut.4) THEN x_alarm1Temp1 := 1; ELSE x_alarm1Temp1 := 0; END_IF
+ton_delay1(IN:= x_alarm1Temp1 AND NOT wi_chPara.0 AND NOT wi_chParaJm.0, PT:= REAL_TO_TIME ( ri_chSP[3]*1000), Q=> wo_alarmOut.0, ET=> );(*Level 1 alarm steady*)
+tp_almPulse1(IN:=wo_alarmOut.0 , PT:= T#1s, Q=> w_alarmOutp_temp.0, ET=> );(*Level 1 alarm single pulse*)
+IF (w_alarmOutp_temp.0 OR wo_alarmOutp.0) AND NOT xi_ack THEN wo_alarmOutp.0:=1; ELSE wo_alarmOutp.0:=0; END_IF(*Level 1 alarm single pulse latched till acknowledge*)
+
+IF ro_perOut < ri_chSP[1]AND NOT(wo_alarmOut.3 OR wo_alarmOut.4) THEN x_alarm2Temp1 := 1; ELSE x_alarm2Temp1 := 0; END_IF
+ton_delay2(IN:= x_alarm2Temp1 AND NOT wi_chPara.1 AND NOT wi_chParaJm.1, PT:= REAL_TO_TIME ( ri_chSP[4]*1000), Q=> wo_alarmOut.1, ET=> );(*Level 2 alarm steady*)
+tp_almPulse2(IN:=wo_alarmOut.1 , PT:= T#1s, Q=> w_alarmOutp_temp.1, ET=> );(*Level 2 alarm single pulse*)
+IF (w_alarmOutp_temp.1 OR wo_alarmOutp.1) AND NOT xi_ack THEN wo_alarmOutp.1:=1; ELSE wo_alarmOutp.1:=0; END_IF(*Level 1 alarm single pulse latched till acknowledge*)
+
+IF ro_perOut > ri_chSP[2] THEN x_alarm3Temp1 := 1; ELSE x_alarm3Temp1 := 0; END_IF
+ton_delay3(IN:= x_alarm3Temp1 AND NOT wi_chPara.2 AND NOT wi_chParaJm.2, PT:= REAL_TO_TIME ( ri_chSP[5]*1000), Q=> wo_alarmOut.2, ET=> );(*Level 3 alarm steady*)
+tp_almPulse3(IN:=wo_alarmOut.2 , PT:= T#1s, Q=> w_alarmOutp_temp.2, ET=> );(*Level 3 alarm single pulse*)
+IF (w_alarmOutp_temp.2 OR wo_alarmOutp.2) AND NOT xi_ack THEN wo_alarmOutp.2:=1; ELSE wo_alarmOutp.2:=0; END_IF(*Level 1 alarm single pulse latched till acknowledge*)
+
+IF r_sensorValtemp < 3 THEN x_alarm4Temp1 := 1; ELSE x_alarm4Temp1 := 0; END_IF
+ton_delay4(IN:= x_alarm4Temp1 AND NOT wi_chPara.3 AND NOT wi_chParaJm.3, PT:= REAL_TO_TIME ( ri_chSP[6]*1000), Q=> wo_alarmOut.3, ET=> );(*cable break alarm steady*)
+tp_almPulse4(IN:=wo_alarmOut.3 , PT:= T#1s, Q=> w_alarmOutp_temp.3, ET=> );(*cable break alarm single pulse*)
+IF (w_alarmOutp_temp.3 OR wo_alarmOutp.3) AND NOT xi_ack THEN wo_alarmOutp.3:=1; ELSE wo_alarmOutp.3:=0; END_IF(*cable break alarm single pulse latched till acknowledge*)
+
+IF r_sensorValtemp >= 22 THEN x_alarm5Temp1 := 1; ELSE x_alarm5Temp1 := 0; END_IF
+ton_delay5(IN:= x_alarm5Temp1 AND NOT wi_chPara.4 AND NOT wi_chParaJm.4, PT:= REAL_TO_TIME ( ri_chSP[6]*1000), Q=> wo_alarmOut.4, ET=> );(*over range alarm steady*)
+tp_almPulse5(IN:=wo_alarmOut.4 , PT:= T#1s, Q=> w_alarmOutp_temp.4, ET=> );(*over range alarm single pulse*)
+IF (w_alarmOutp_temp.4 OR wo_alarmOutp.4) AND NOT xi_ack THEN wo_alarmOutp.4:=1; ELSE wo_alarmOutp.4:=0; END_IF(*over range alarm single pulse latched till acknowledge*)
+
+IF ro_perOut > ri_chSP[13] THEN x_alarm6Temp1 := 1; ELSE x_alarm6Temp1 := 0; END_IF
+ton_delay6(IN:= x_alarm6Temp1 AND NOT wi_chPara.10 AND NOT wi_chParaJm.10, PT:= REAL_TO_TIME ( ri_chSP[14]*1000), Q=> wo_alarmOut.5, ET=> );(*Level 4 alarm steady*)
+tp_almPulse6(IN:=wo_alarmOut.5 , PT:= T#1s, Q=> w_alarmOutp_temp.5, ET=> );(*Level 4 alarm single pulse*)
+IF (w_alarmOutp_temp.5 OR wo_alarmOutp.5) AND NOT xi_ack THEN wo_alarmOutp.5:=1; ELSE wo_alarmOutp.5:=0; END_IF(*Level 4 alarm single pulse latched till acknowledge*)
+
+(*Alarm message*)
+IF	wo_alarmOut.0 AND  wo_alarmOut.1 AND NOT wo_alarmOut.3 AND NOT wo_alarmOut.4 AND NOT xi_comErr  THEN	wo_alarmMsg :=1;(*LoLo*)
+ELSE IF	NOT wo_alarmOut.0 AND wo_alarmOut.1 AND NOT wo_alarmOut.3 AND NOT wo_alarmOut.4 AND NOT xi_comErr THEN	wo_alarmMsg :=2;(*Lo*)
+ELSE IF	NOT wo_alarmOut.5 AND wo_alarmOut.2 AND NOT wo_alarmOut.3 AND NOT wo_alarmOut.4 AND NOT xi_comErr THEN	wo_alarmMsg :=3;(*Hi*)
+ELSE IF	wo_alarmOut.5 AND wo_alarmOut.2 AND NOT wo_alarmOut.3 AND NOT wo_alarmOut.4 AND NOT xi_comErr THEN	wo_alarmMsg :=4;(*HiHi*)
+ELSE IF	wo_alarmOut.3 OR wo_alarmOut.4 OR xi_comErr THEN	wo_alarmMsg :=5;(*Sensor fault*)
+ELSE wo_alarmMsg :=0;	END_IF	END_IF	END_IF	END_IF	END_IF
+(*common buzzer out*)
+xo_buzPulse := (w_alarmOutp_temp.0 AND NOT wi_chPara.5) OR (w_alarmOutp_temp.1 AND NOT wi_chPara.6) OR (w_alarmOutp_temp.2 AND NOT wi_chPara.7) OR (w_alarmOutp_temp.3 AND NOT wi_chPara.8) OR (w_alarmOutp_temp.4 AND NOT wi_chPara.9) OR (w_alarmOutp_temp.5 AND NOT wi_chPara.11);
+(*common indication*)
+xo_ind :=wo_alarmOut.0 OR wo_alarmOut.1 OR wo_alarmOut.2 OR wo_alarmOut.3 OR wo_alarmOut.4 OR wo_alarmOut.5;
+(*Total inhibited alarms from Jmobile*)
+wo_inhTot := BOOL_TO_WORD(wi_chParaJm.0) + BOOL_TO_WORD(wi_chParaJm.1) + BOOL_TO_WORD(wi_chParaJm.2)
+ + BOOL_TO_WORD(wi_chParaJm.3) + BOOL_TO_WORD(wi_chParaJm.4) + BOOL_TO_WORD(wi_chParaJm.10);
