@@ -1,0 +1,163 @@
+PROGRAM PLC_PRG
+VAR
+	w_modelNo1 : WORD;
+	w_modelNo2 : WORD;
+	w_modelNo3 : WORD;
+	(**)
+	aeGroup0: fb_alarmEvent;
+	aeGroup1: fb_alarmEvent;
+	aeGroup2: fb_alarmEvent;
+	aeGroup3: fb_alarmEvent;
+	aeGroup4: fb_alarmEvent;
+	aeGroup5: fb_alarmEvent;
+	aeGroup6: fb_alarmEvent;
+	aeGroup7: fb_alarmEvent;
+	aeGroup8: fb_alarmEvent;
+	aeGroup9: fb_alarmEvent;
+	aeGroup10: fb_alarmEvent;
+	aeGroup11: fb_alarmEvent;
+	aeGroup12: fb_alarmEvent;
+	
+	w_digAlarmInh		: ARRAY[0..12]	OF	WORD;
+	w_anaAlarmInh		: ARRAY[0..15]	OF	WORD;
+	lwi_interlocks		: ARRAY[0..12]	OF	WORD;
+	lx_refresh: BOOL;
+	lx_ack: BOOL;
+	lwo_dialmBuzzer: WORD;
+	lwo_dialmInd: WORD;
+	(**)
+	tmGroup0: fb_tankMonitor;	
+	tmGroup1: fb_tankMonitor;
+	tmGroup2: fb_tankMonitor;
+	tmGroup3: fb_tankMonitor;
+	tmGroup4: fb_tankMonitor;
+	tmGroup5: fb_tankMonitor;
+	tmGroup6: fb_tankMonitor;
+	tmGroup7: fb_tankMonitor;
+	tmGroup8: fb_tankMonitor;
+	tmGroup9: fb_tankMonitor;
+	tmGroup10: fb_tankMonitor;
+	tmGroup11: fb_tankMonitor;	
+	tmGroup12: fb_tankMonitor;
+	tmGroup13: fb_tankMonitor;
+	tmGroup14: fb_tankMonitor;
+	tmGroup15: fb_tankMonitor;	
+	lwo_aialmBuzzer: WORD;
+	lwo_aialmInd: WORD;
+	
+	
+(*commReset*)	
+	x_im1Error : BOOL;
+	im1Errorcode : MB_ErrorCodes;
+	x_im1Ack: BOOL;
+
+	x_masterReset: BOOL;
+	x_im1Reset: BOOL;
+	x_im2Reset: BOOL;
+	x_im3Reset: BOOL;
+	x_im4Reset: BOOL;
+	x_im5Reset: BOOL;
+	x_im6Reset: BOOL;
+	x_im7Reset: BOOL;
+	x_im8Reset: BOOL;
+	x_om1Reset: BOOL;
+	x_aim1Reset: BOOL;	
+	
+	ton_blink1: TON;
+	ton_blink2: TON;
+	ton_blink3: TON;
+	ton_blink4: TON;
+	ton_blink5: TON;
+	ton_blink6: TON;
+	ton_blink7: TON;
+	ton_blink8: TON;
+	ton_blink9: TON;
+	ton_blink11: TON;
+	ton_blink12: TON;
+	ton_blink13: TON;
+	ton_blink14: TON;
+	ton_blink15: TON;
+	ton_blink16: TON;
+	ton_blink17: TON;
+	ton_blink18: TON;
+	ton_blink19: TON;
+	ton_blink20: TON;
+	ton_blink21: TON;	
+	ton_blink22: TON;
+	
+	tp_blink1: TP;
+	tp_blink2: TP;
+	tp_blink3: TP;
+	tp_blink4: TP;
+	tp_blink5: TP;
+	tp_blink6: TP;
+	tp_blink7: TP;
+	tp_blink8: TP;
+	tp_blink9: TP;
+	tp_blink10: TP;
+	tp_blink11: TP;
+	tp_blink12: TP;
+	tp_blink13: TP;
+	tp_blink14: TP;
+	tp_blink15: TP;
+	tp_blink16: TP;
+	tp_blink17: TP;
+	tp_blink18: TP;
+	tp_blink19: TP;
+	tp_blink20: TP;
+	tp_blink21: TP;
+	tp_blink22: TP;
+	
+
+	x_mbReset: BOOL;
+(*Alarm out*)
+	buzzerSet1: fb_buzzer;
+	buzzerSet2: fb_buzzer;
+	buzzerSet3: fb_buzzer;
+	buzzerSet4: fb_buzzer;
+	buzzerSet5: fb_buzzer;
+    buzzerSet6: fb_buzzer;
+	buzzerSet7: fb_buzzer;
+    buzzerSet8: fb_buzzer;			
+	comAlarm: fb_comAlarm;
+	comAlarm1: fb_comAlarm;
+	comAlarm2: fb_comAlarm;
+	comAlarm3: fb_comAlarm;	
+	commCheck1: commCheck;
+	ee: fb_tankMonitor;
+	ton_enginesd: TON;
+	
+	
+	
+	overide_out: BOOL;
+	poweron_ton: TON;
+	Delay_ton: TON;
+	wi_interlocks: INT;
+END_VAR
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+w_modelNo1 := im1model;
+
+ioList1();
+digitalProcessing();
+analogProcessing();
+alarmOut();
+commReset();
+alarmInh();
+smart_ship();
+
