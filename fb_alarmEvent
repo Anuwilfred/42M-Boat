@@ -1,0 +1,634 @@
+FUNCTION_BLOCK fb_alarmEvent
+VAR_INPUT
+	wi_input: WORD;
+	wi_set: WORD :=65535;
+	wai_delay: ARRAY[0..15] OF WORD;
+	wi_inhibit: WORD;
+	wi_inhibitJm: WORD;
+	wi_interlock: WORD;
+	wi_alarmEvent: WORD;
+	xi_reset: BOOL;
+	xi_ack: BOOL;
+	
+END_VAR
+VAR_OUTPUT
+	wo_alarm: WORD;
+	wo_event: WORD;
+	wo_alarmLa : WORD;
+	xo_buzzer: BOOL;
+	xo_ind: BOOL;
+	xo_indLa: BOOL;
+	wo_inhTot: WORD;
+END_VAR
+VAR
+	AlarmOutTemp: WORD;
+	AlarmDelayTemp: ARRAY[0..15] OF TIME;
+	
+
+	HighInterlock1: WORD;
+	HighInterlock2: WORD;
+	LowInterlock1: WORD;
+	LowInterlock2: WORD;
+	
+	TR1: TON;
+	TR2: TON;
+	TR3: TON;
+	TR4: TON;
+	TR5: TON;
+	TR6: TON;
+	TR7: TON;
+	TR8: TON;
+	TR9: TON;
+	TR10: TON;
+	TR11: TON;
+	TR12: TON;
+	TR13: TON;
+	TR14: TON;
+	TR15: TON;
+	TR16: TON;
+	AlarmOut1: TP;
+	AlarmOut2: TP;
+	AlarmOut3: TP;
+	AlarmOut4: TP;
+	AlarmOut5: TP;
+	AlarmOut6: TP;
+	AlarmOut7: TP;
+	AlarmOut8: TP;
+	AlarmOut9: TP;
+	AlarmOut10: TP;
+	AlarmOut11: TP;
+	AlarmOut12: TP;
+	AlarmOut13: TP;
+	AlarmOut14: TP;
+	AlarmOut15: TP;
+	AlarmOut16: TP;
+	x_reset1: BOOL;
+	x_reset2: BOOL;
+	x_reset3: BOOL;
+	x_reset4: BOOL;
+	x_reset5: BOOL;
+	x_reset6: BOOL;
+	x_reset7: BOOL;
+	x_reset8: BOOL;
+	x_reset9: BOOL;
+	x_reset10: BOOL;
+	x_reset11: BOOL;
+	x_reset12: BOOL;
+	x_reset13: BOOL;
+	x_reset14: BOOL;
+	x_reset15: BOOL;
+	x_reset16: BOOL;
+END_VAR
+
+
+
+(*Alarm1*)
+
+(*x_reset*)
+IF wo_alarm.0 AND xi_reset THEN
+x_reset1:= TRUE;
+ELSE
+x_reset1:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR1(IN:= , PT:= , Q=> , ET=> );
+TR1.IN:=AlarmOutTemp.0;
+TR1.PT:= AlarmDelayTemp[0];
+AlarmDelayTemp[0]:=WORD_TO_TIME ( wai_delay[0]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.0=1 AND wi_set.0=1) OR (wi_input.0=0 AND wi_set.0=0)) AND wi_inhibit.0=0 AND wi_inhibitJm.0=0 AND x_reset1=0
+THEN
+AlarmOutTemp.0:=1;
+ELSE
+AlarmOutTemp.0:=0;
+END_IF
+
+
+(*Final alarm and event output with delay*)
+wo_alarm.0:=TR1.Q AND wi_alarmEvent.0 AND NOT wi_interlock.0;
+wo_event.0:=TR1.Q ;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut1(IN:=wo_alarm.0 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut1.Q OR wo_alarmLa.0) AND NOT xi_ack THEN wo_alarmLa.0:=1; ELSE wo_alarmLa.0:=0; END_IF
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm2*)
+
+(*x_reset*)
+IF wo_alarm.1 AND xi_reset THEN
+x_reset2:= TRUE;
+ELSE
+x_reset2:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR2(IN:= , PT:= , Q=> , ET=> );
+TR2.IN:=AlarmOutTemp.1;
+TR2.PT:= AlarmDelayTemp[1];
+AlarmDelayTemp[1]:=WORD_TO_TIME ( wai_delay[1]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.1=1 AND wi_set.1=1) OR (wi_input.1=0 AND wi_set.1=0)) AND wi_inhibit.1=0 AND wi_inhibitJm.1=0  AND x_reset2=0
+THEN
+AlarmOutTemp.1:=1;
+ELSE
+AlarmOutTemp.1:=0;
+END_IF
+
+
+(*Final alarm and event output with delay*)
+wo_alarm.1:=TR2.Q AND wi_alarmEvent.1 AND NOT wi_interlock.1;
+wo_event.1:=TR2.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut2(IN:=wo_alarm.1 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut2.Q OR wo_alarmLa.1) AND NOT xi_ack THEN wo_alarmLa.1:=1; ELSE wo_alarmLa.1:=0; END_IF
+
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm3*)
+
+(*x_reset*)
+IF wo_alarm.2 AND xi_reset THEN
+x_reset3:= TRUE;
+ELSE
+x_reset3:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR3(IN:= , PT:= , Q=> , ET=> );
+TR3.IN:=AlarmOutTemp.2;
+TR3.PT:= AlarmDelayTemp[2];
+AlarmDelayTemp[2]:=WORD_TO_TIME ( wai_delay[2]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.2=1 AND wi_set.2=1) OR (wi_input.2=0 AND wi_set.2=0)) AND wi_inhibit.2=0 AND wi_inhibitJm.2=0   AND x_reset3=0
+THEN
+AlarmOutTemp.2:=1;
+ELSE
+AlarmOutTemp.2:=0;
+END_IF
+
+(*Final alarm and event output with delay*)
+wo_alarm.2:=TR3.Q AND wi_alarmEvent.2 AND NOT wi_interlock.2;
+wo_event.2:=TR3.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut3(IN:=wo_alarm.2 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut3.Q OR wo_alarmLa.2) AND NOT xi_ack THEN wo_alarmLa.2:=1; ELSE wo_alarmLa.2:=0; END_IF
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm4*)
+
+(*x_reset*)
+IF wo_alarm.3 AND xi_reset THEN
+x_reset4:= TRUE;
+ELSE
+x_reset4:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR4(IN:= , PT:= , Q=> , ET=> );
+TR4.IN:=AlarmOutTemp.3;
+TR4.PT:= AlarmDelayTemp[3];
+AlarmDelayTemp[3]:=WORD_TO_TIME ( wai_delay[3]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.3=1 AND wi_set.3=1) OR (wi_input.3=0 AND wi_set.3=0)) AND wi_inhibit.3=0 AND wi_inhibitJm.3=0  AND x_reset4=0
+THEN
+AlarmOutTemp.3:=1;
+ELSE
+AlarmOutTemp.3:=0;
+END_IF
+
+(*Final alarm and event output with delay*)
+wo_alarm.3:=TR4.Q AND wi_alarmEvent.3 AND NOT wi_interlock.3;
+wo_event.3:=TR4.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut4(IN:=wo_alarm.3 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut4.Q OR wo_alarmLa.3) AND NOT xi_ack THEN wo_alarmLa.3:=1; ELSE wo_alarmLa.3:=0; END_IF
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm5*)
+
+(*x_reset*)
+IF wo_alarm.4 AND xi_reset THEN
+x_reset5:= TRUE;
+ELSE
+x_reset5:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR5(IN:= , PT:= , Q=> , ET=> );
+TR5.IN:=AlarmOutTemp.4;
+TR5.PT:= AlarmDelayTemp[4];
+AlarmDelayTemp[4]:=WORD_TO_TIME ( wai_delay[4]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.4=1 AND wi_set.4=1) OR (wi_input.4=0 AND wi_set.4=0)) AND wi_inhibit.4=0 AND wi_inhibitJm.4=0   AND x_reset5=0
+THEN
+AlarmOutTemp.4:=1;
+ELSE
+AlarmOutTemp.4:=0;
+END_IF
+
+(*Final alarm and event output with delay*)
+wo_alarm.4:=TR5.Q AND wi_alarmEvent.4 AND NOT wi_interlock.4;
+wo_event.4:=TR5.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut5(IN:=wo_alarm.4 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut5.Q OR wo_alarmLa.4) AND NOT xi_ack THEN wo_alarmLa.4:=1; ELSE wo_alarmLa.4:=0; END_IF
+
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm6*)
+
+(*x_reset*)
+IF wo_alarm.5 AND xi_reset THEN
+x_reset6:= TRUE;
+ELSE
+x_reset6:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR6(IN:= , PT:= , Q=> , ET=> );
+TR6.IN:=AlarmOutTemp.5;
+TR6.PT:= AlarmDelayTemp[5];
+AlarmDelayTemp[5]:=WORD_TO_TIME ( wai_delay[5]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.5=1 AND wi_set.5=1) OR (wi_input.5=0 AND wi_set.5=0)) AND wi_inhibit.5=0 AND wi_inhibitJm.5=0   AND x_reset6=0
+THEN
+AlarmOutTemp.5:=1;
+ELSE
+AlarmOutTemp.5:=0;
+END_IF
+
+(*Final alarm and event output with delay*)
+wo_alarm.5:=TR6.Q AND wi_alarmEvent.5 AND NOT wi_interlock.5;
+wo_event.5:=TR6.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut6(IN:=wo_alarm.5 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut6.Q OR wo_alarmLa.5) AND NOT xi_ack THEN wo_alarmLa.5:=1; ELSE wo_alarmLa.5:=0; END_IF
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm7*)
+
+(*x_reset*)
+IF wo_alarm.6 AND xi_reset THEN
+x_reset7:= TRUE;
+ELSE
+x_reset7:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR7(IN:= , PT:= , Q=> , ET=> );
+TR7.IN:=AlarmOutTemp.6;
+TR7.PT:= AlarmDelayTemp[6];
+AlarmDelayTemp[6]:=WORD_TO_TIME ( wai_delay[6]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.6=1 AND wi_set.6=1) OR (wi_input.6=0 AND wi_set.6=0)) AND wi_inhibit.6=0 AND wi_inhibitJm.6=0   AND x_reset7=0
+THEN
+AlarmOutTemp.6:=1;
+ELSE
+AlarmOutTemp.6:=0;
+END_IF
+
+
+(*Final alarm and event output with delay*)
+wo_alarm.6:=TR7.Q AND wi_alarmEvent.6 AND NOT wi_interlock.6;
+wo_event.6:=TR7.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut7(IN:=wo_alarm.6 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut7.Q OR wo_alarmLa.6) AND NOT xi_ack THEN wo_alarmLa.6:=1; ELSE wo_alarmLa.6:=0; END_IF
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm8*)
+
+(*x_reset*)
+IF wo_alarm.7 AND xi_reset THEN
+x_reset8:= TRUE;
+ELSE
+x_reset8:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR8(IN:= , PT:= , Q=> , ET=> );
+TR8.IN:=AlarmOutTemp.7;
+TR8.PT:= AlarmDelayTemp[7];
+AlarmDelayTemp[7]:=WORD_TO_TIME ( wai_delay[7]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.7=1 AND wi_set.7=1) OR (wi_input.7=0 AND wi_set.7=0)) AND wi_inhibit.7=0 AND wi_inhibitJm.7=0   AND x_reset8=0
+THEN
+AlarmOutTemp.7:=1;
+ELSE
+AlarmOutTemp.7:=0;
+END_IF
+
+(*Final alarm and event output with delay*)
+wo_alarm.7:=TR8.Q AND wi_alarmEvent.7 AND NOT wi_interlock.7;
+wo_event.7:=TR8.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut8(IN:=wo_alarm.7 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut8.Q OR wo_alarmLa.7) AND NOT xi_ack THEN wo_alarmLa.7:=1; ELSE wo_alarmLa.7:=0; END_IF
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm9*)
+
+(*x_reset*)
+IF wo_alarm.8 AND xi_reset THEN
+x_reset9:= TRUE;
+ELSE
+x_reset9:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR9(IN:= , PT:= , Q=> , ET=> );
+TR9.IN:=AlarmOutTemp.8;
+TR9.PT:= AlarmDelayTemp[8];
+AlarmDelayTemp[8]:=WORD_TO_TIME ( wai_delay[8]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.8=1 AND wi_set.8=1) OR (wi_input.8=0 AND wi_set.8=0)) AND wi_inhibit.8=0 AND wi_inhibitJm.8=0   AND x_reset9=0
+THEN
+AlarmOutTemp.8:=1;
+ELSE
+AlarmOutTemp.8:=0;
+END_IF
+
+(*Final alarm and event output with delay*)
+wo_alarm.8:=TR9.Q AND wi_alarmEvent.8 AND NOT wi_interlock.8;
+wo_event.8:=TR9.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut9(IN:=wo_alarm.8 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut9.Q OR wo_alarmLa.8) AND NOT xi_ack THEN wo_alarmLa.8:=1; ELSE wo_alarmLa.8:=0; END_IF
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm10*)
+
+(*x_reset*)
+IF wo_alarm.9 AND xi_reset THEN
+x_reset10:= TRUE;
+ELSE
+x_reset10:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR10(IN:= , PT:= , Q=> , ET=> );
+TR10.IN:=AlarmOutTemp.9;
+TR10.PT:= AlarmDelayTemp[9];
+AlarmDelayTemp[9]:=WORD_TO_TIME ( wai_delay[9]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.9=1 AND wi_set.9=1) OR (wi_input.9=0 AND wi_set.9=0)) AND wi_inhibit.9=0 AND wi_inhibitJm.9=0  AND x_reset10=0
+THEN
+AlarmOutTemp.9:=1;
+ELSE
+AlarmOutTemp.9:=0;
+END_IF
+
+(*Final alarm and event output with delay*)
+wo_alarm.9:=TR10.Q AND wi_alarmEvent.9 AND NOT wi_interlock.9;
+wo_event.9:=TR10.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut10(IN:=wo_alarm.9 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut10.Q OR wo_alarmLa.9) AND NOT xi_ack THEN wo_alarmLa.9:=1; ELSE wo_alarmLa.9:=0; END_IF
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm11*)
+
+(*x_reset*)
+IF wo_alarm.10 AND xi_reset THEN
+x_reset11:= TRUE;
+ELSE
+x_reset11:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR11(IN:= , PT:= , Q=> , ET=> );
+TR11.IN:=AlarmOutTemp.10;
+TR11.PT:= AlarmDelayTemp[10];
+AlarmDelayTemp[10]:=WORD_TO_TIME ( wai_delay[10]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.10=1 AND wi_set.10=1) OR (wi_input.10=0 AND wi_set.10=0)) AND wi_inhibit.10=0 AND wi_inhibitJm.10=0   AND x_reset11=0
+THEN
+AlarmOutTemp.10:=1;
+ELSE
+AlarmOutTemp.10:=0;
+END_IF
+
+(*Final alarm and event output with delay*)
+wo_alarm.10:=TR11.Q AND wi_alarmEvent.10 AND NOT wi_interlock.10;
+wo_event.10:=TR11.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut11(IN:=wo_alarm.10 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut11.Q OR wo_alarmLa.10) AND NOT xi_ack THEN wo_alarmLa.10:=1; ELSE wo_alarmLa.10:=0; END_IF
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm12*)
+
+(*x_reset*)
+IF wo_alarm.11 AND xi_reset THEN
+x_reset12:= TRUE;
+ELSE
+x_reset12:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR12(IN:= , PT:= , Q=> , ET=> );
+TR12.IN:=AlarmOutTemp.11;
+TR12.PT:= AlarmDelayTemp[11];
+AlarmDelayTemp[11]:=WORD_TO_TIME ( wai_delay[11]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.11=1 AND wi_set.11=1) OR (wi_input.11=0 AND wi_set.11=0)) AND wi_inhibit.11=0 AND wi_inhibitJm.11=0   AND x_reset12=0
+THEN
+AlarmOutTemp.11:=1;
+ELSE
+AlarmOutTemp.11:=0;
+END_IF
+
+(*Final alarm and event output with delay*)
+wo_alarm.11:=TR12.Q AND wi_alarmEvent.11 AND NOT wi_interlock.11;
+wo_event.11:=TR12.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut12(IN:=wo_alarm.11 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut12.Q OR wo_alarmLa.11) AND NOT xi_ack THEN wo_alarmLa.11:=1; ELSE wo_alarmLa.11:=0; END_IF
+
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm13*)
+
+(*x_reset*)
+IF wo_alarm.12 AND xi_reset THEN
+x_reset13:= TRUE;
+ELSE
+x_reset13:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR13(IN:= , PT:= , Q=> , ET=> );
+TR13.IN:=AlarmOutTemp.12;
+TR13.PT:= AlarmDelayTemp[12];
+AlarmDelayTemp[12]:=WORD_TO_TIME ( wai_delay[12]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.12=1 AND wi_set.12=1) OR (wi_input.12=0 AND wi_set.12=0)) AND wi_inhibit.12=0 AND wi_inhibitJm.12=0   AND x_reset13=0
+THEN
+AlarmOutTemp.12:=1;
+ELSE
+AlarmOutTemp.12:=0;
+END_IF
+
+(*Final alarm and event output with delay*)
+wo_alarm.12:=TR13.Q AND wi_alarmEvent.12 AND NOT wi_interlock.12;
+wo_event.12:=TR13.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut13(IN:=wo_alarm.12 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut13.Q OR wo_alarmLa.12) AND NOT xi_ack THEN wo_alarmLa.12:=1; ELSE wo_alarmLa.12:=0; END_IF
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm14*)
+
+(*x_reset*)
+IF wo_alarm.13 AND xi_reset THEN
+x_reset14:= TRUE;
+ELSE
+x_reset14:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR14(IN:= , PT:= , Q=> , ET=> );
+TR14.IN:=AlarmOutTemp.13;
+TR14.PT:= AlarmDelayTemp[13];
+AlarmDelayTemp[13]:=WORD_TO_TIME ( wai_delay[13]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.13=1 AND wi_set.13=1) OR (wi_input.13=0 AND wi_set.13=0)) AND wi_inhibit.13=0 AND wi_inhibitJm.13=0   AND x_reset14=0
+THEN
+AlarmOutTemp.13:=1;
+ELSE
+AlarmOutTemp.13:=0;
+END_IF
+
+(*Final alarm and event output with delay*)
+wo_alarm.13:=TR14.Q AND wi_alarmEvent.13 AND NOT wi_interlock.13;
+wo_event.13:=TR14.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut14(IN:=wo_alarm.13 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut14.Q OR wo_alarmLa.13) AND NOT xi_ack THEN wo_alarmLa.13:=1; ELSE wo_alarmLa.13:=0; END_IF
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm15*)
+
+(*x_reset*)
+IF wo_alarm.14 AND xi_reset THEN
+x_reset15:= TRUE;
+ELSE
+x_reset15:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR15(IN:= , PT:= , Q=> , ET=> );
+TR15.IN:=AlarmOutTemp.14;
+TR15.PT:= AlarmDelayTemp[14];
+AlarmDelayTemp[14]:=WORD_TO_TIME ( wai_delay[14]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.14=1 AND wi_set.14=1) OR (wi_input.14=0 AND wi_set.14=0)) AND wi_inhibit.14=0 AND wi_inhibitJm.14=0  AND x_reset15=0
+THEN
+AlarmOutTemp.14:=1;
+ELSE
+AlarmOutTemp.14:=0;
+END_IF
+
+
+(*Final alarm and event output with delay*)
+wo_alarm.14:=TR15.Q AND wi_alarmEvent.14 AND NOT wi_interlock.14;
+wo_event.14:=TR15.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut15(IN:=wo_alarm.14 , PT:= T#1s, Q=> , ET=> );
+IF(AlarmOut15.Q OR wo_alarmLa.14) AND NOT xi_ack THEN wo_alarmLa.14:=1; ELSE wo_alarmLa.14:=0; END_IF
+(*------------------------------------------------------------------------------------------------------------------------------*)
+
+(*Alarm16*)
+
+(*x_reset*)
+IF wo_alarm.15 AND xi_reset THEN
+x_reset16:= TRUE;
+ELSE
+x_reset16:= FALSE;
+END_IF
+
+
+(*Time delay*)
+TR16(IN:= , PT:= , Q=> , ET=> );
+TR16.IN:=AlarmOutTemp.15;
+TR16.PT:= AlarmDelayTemp[15];
+AlarmDelayTemp[15]:=WORD_TO_TIME ( wai_delay[15]*1000);
+
+(*Alarm condition:- Set NO/NC, Inhibit, x_reset*)
+IF ((wi_input.15=1 AND wi_set.15=1) OR (wi_input.15=0 AND wi_set.15=0)) AND wi_inhibit.15=0 AND wi_inhibitJm.15=0  AND x_reset16=0
+THEN
+AlarmOutTemp.15:=1;
+ELSE
+AlarmOutTemp.15:=0;
+END_IF
+
+
+(*Final alarm and event output with delay*)
+wo_alarm.15:=TR16.Q AND wi_alarmEvent.15 AND NOT wi_interlock.15;
+wo_event.15:=TR16.Q;
+(*Final alarm single pulse latched till acknowledge*)
+AlarmOut16(IN:=wo_alarm.15 , PT:= T#1s, Q=> , ET=> );
+IF (AlarmOut16.Q OR wo_alarmLa.15) AND NOT xi_ack THEN wo_alarmLa.15:=1; ELSE wo_alarmLa.15:=0; END_IF
+
+(*common buzzer out*)
+
+IF AlarmOut1.Q OR AlarmOut2.Q OR AlarmOut3.Q OR AlarmOut4.Q OR AlarmOut5.Q OR AlarmOut6.Q OR AlarmOut7.Q OR AlarmOut8.Q
+OR AlarmOut9.Q OR AlarmOut10.Q OR AlarmOut11.Q OR AlarmOut12.Q OR AlarmOut13.Q OR AlarmOut14.Q OR AlarmOut15.Q OR AlarmOut16.Q THEN
+xo_buzzer := 1;
+ELSE
+xo_buzzer := 0;
+END_IF
+(*common indication out*)
+IF wo_alarm.0 OR wo_alarm.1 OR wo_alarm.2 OR wo_alarm.3 OR wo_alarm.4 OR wo_alarm.5 OR wo_alarm.6
+OR wo_alarm.7 OR wo_alarm.8 OR wo_alarm.9 OR wo_alarm.10 OR wo_alarm.11 OR wo_alarm.12 OR wo_alarm.13
+OR wo_alarm.14 OR wo_alarm.15 THEN
+xo_ind := 1;
+ELSE
+xo_ind := 0;
+END_IF
+(*common indication out single pulse latched till acknowledge*)
+IF wo_alarmLa.0 OR wo_alarmLa.1 OR wo_alarmLa.2 OR wo_alarmLa.3 OR wo_alarmLa.4 OR wo_alarmLa.5 OR wo_alarmLa.6
+OR wo_alarmLa.7 OR wo_alarmLa.8 OR wo_alarmLa.9 OR wo_alarmLa.10 OR wo_alarmLa.11 OR wo_alarmLa.12 OR wo_alarmLa.13
+OR wo_alarmLa.14 OR wo_alarmLa.15 THEN
+xo_indLa := 1;
+ELSE
+xo_indLa := 0;
+END_IF
+
+(*Total inhibited alarms from Jmobile*)
+wo_inhTot := BOOL_TO_WORD(wi_inhibitJm.0) + BOOL_TO_WORD(wi_inhibitJm.1) + BOOL_TO_WORD(wi_inhibitJm.2)
+ + BOOL_TO_WORD(wi_inhibitJm.3) + BOOL_TO_WORD(wi_inhibitJm.4) + BOOL_TO_WORD(wi_inhibitJm.5) + BOOL_TO_WORD(wi_inhibitJm.6)
+ + BOOL_TO_WORD(wi_inhibitJm.7) + BOOL_TO_WORD(wi_inhibitJm.8) + BOOL_TO_WORD(wi_inhibitJm.9) + BOOL_TO_WORD(wi_inhibitJm.10)
+ + BOOL_TO_WORD(wi_inhibitJm.11) + BOOL_TO_WORD(wi_inhibitJm.12) + BOOL_TO_WORD(wi_inhibitJm.13) + BOOL_TO_WORD(wi_inhibitJm.14)
+ + BOOL_TO_WORD(wi_inhibitJm.15);
