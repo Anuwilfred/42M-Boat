@@ -1,0 +1,15 @@
+x_im1Error := Modbus_Slave_im1.xError;
+im1Errorcode := Modbus_Slave_im1.byModbusError;
+
+(*Communication errors*)
+ton_blink11(IN:= NOT Modbus_Slave_im1.xError, PT:= T#5S, Q=> , ET=> );
+ton_blink12(IN:= NOT Modbus_Slave_im2.xError, PT:= T#5S, Q=> , ET=> );
+ton_blink13(IN:= NOT Modbus_Slave_im3.xError, PT:= T#5S, Q=> , ET=> );
+ton_blink14(IN:= NOT Modbus_Slave_im4.xError, PT:= T#5S, Q=> , ET=> );
+ton_blink15(IN:= NOT Modbus_Slave_im5.xError, PT:= T#5S, Q=> , ET=> );
+ton_blink16(IN:= NOT Modbus_Slave_im6.xError, PT:= T#5S, Q=> , ET=> );
+ton_blink17(IN:= NOT Modbus_Slave_im7.xError, PT:= T#5S, Q=> , ET=> );
+ton_blink18(IN:= NOT Modbus_Slave_im8.xError, PT:= T#5S, Q=> , ET=> );
+ton_blink19(IN:= NOT Modbus_Slave_im9.xError, PT:= T#5S, Q=> , ET=> );
+ton_blink20(IN:= NOT Modbus_Slave_om1.xError, PT:= T#5S, Q=> , ET=> );
+ton_blink21(IN:= NOT Modbus_Slave_aim1.xError, PT:= T#5S, Q=> , ET=> );
