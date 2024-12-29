@@ -1,0 +1,41 @@
+FUNCTION_BLOCK fb_scaling20R
+VAR_INPUT
+	
+	ii_pts	:	INT;
+	ri_input	:	REAL;
+	ri_xval 	:	ARRAY[1..20] OF REAL;
+	ri_yval	:	ARRAY[1..20] OF REAL;
+END_VAR
+VAR_OUTPUT
+	ro_result: REAL;
+END_VAR
+VAR
+	j	:	INT;
+	xmax : REAL;
+	xmin : REAL;
+	ymax : REAL;
+	ymin : REAL;
+	error: BOOL;
+END_VAR
+
+
+
+j:=2;
+
+WHILE j< ii_pts AND (ri_xval[j] < ri_input) DO
+j:=j+1;
+END_WHILE
+
+xmax :=ri_xval[j];		
+xmin := ri_xval[j-1];		
+ymax :=ri_yval[j];		
+ymin := ri_yval[j-1];
+
+IF xmin = xmax THEN
+	ro_result := ymin;
+	error :=1;
+ELSE
+	(*ro_result := (ymax - ymin) / (xmax - xmin) * (input - xmin) + ymin;*)(*input not limited*)
+	ro_result := (((ymax - ymin) / (xmax - xmin)) * (LIMIT(xmin, ri_input, xmax) - xmin)) + ymin;(*input limited to scaling min and max range*)
+	error :=0;
+END_IF;
