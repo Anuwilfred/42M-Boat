@@ -1,0 +1,103 @@
+FUNCTION_BLOCK fb_nonLinScale20
+VAR_INPUT
+	input  	: REAL ;
+	xval 	:	ARRAY[0..20] OF WORD;
+	yval	:	ARRAY[0..20] OF WORD;
+
+END_VAR
+VAR_OUTPUT
+	result 		: REAL;
+	error : BOOL ;
+END_VAR
+VAR
+	xmax : WORD;
+	xmin : WORD;
+	ymax : WORD;
+	ymin : WORD;
+
+	LinScale1: fb_linScaleR;
+END_VAR
+
+
+
+
+IF input >= xval[0] AND input < xval[1] THEN
+xmax :=xval[1];		xmin := xval[0];		ymax :=yval[1];		ymin := yval[0];
+
+ELSE IF input >= xval[1] AND input < xval[2] THEN
+xmax :=xval[2];		xmin := xval[1];		ymax :=yval[2];		ymin := yval[1];
+
+ELSE IF input >= xval[2] AND input < xval[3] THEN
+xmax :=xval[3];		xmin := xval[2];		ymax :=yval[3];		ymin := yval[2];
+
+ELSE IF input >= xval[3] AND input < xval[4] THEN
+xmax :=xval[4];		xmin := xval[3];		ymax :=yval[4];		ymin := yval[3];
+
+ELSE IF input >= xval[4] AND input < xval[5] THEN
+xmax :=xval[5];		xmin := xval[4];		ymax :=yval[5];		ymin := yval[4];
+
+ELSE IF input >= xval[5] AND input < xval[6] THEN
+xmax :=xval[6];		xmin := xval[5];		ymax :=yval[6];		ymin := yval[5];
+
+ELSE IF input >= xval[6] AND input < xval[7] THEN
+xmax :=xval[7];		xmin := xval[6];		ymax :=yval[7];		ymin := yval[6];
+
+ELSE IF input >= xval[7] AND input < xval[8] THEN
+xmax :=xval[8];		xmin := xval[7];		ymax :=yval[8];		ymin := yval[7];
+
+ELSE IF input >= xval[8] AND input < xval[9] THEN
+xmax :=xval[9];		xmin := xval[8];		ymax :=yval[9];		ymin := yval[8];
+
+ELSE IF input >= xval[9] AND input < xval[10] THEN
+xmax :=xval[10];		xmin := xval[9];		ymax :=yval[10];		ymin := yval[9];
+
+ELSE IF input >= xval[10] AND input < xval[11] THEN
+xmax :=xval[11];		xmin := xval[10];		ymax :=yval[11];		ymin := yval[10];
+
+
+ELSE IF input >= xval[11] AND input < xval[12] THEN
+xmax :=xval[12];		xmin := xval[11];		ymax :=yval[12];		ymin := yval[11];
+
+
+ELSE IF input >= xval[12] AND input < xval[13] THEN
+xmax :=xval[13];		xmin := xval[12];		ymax :=yval[13];		ymin := yval[12];
+
+
+ELSE IF input >= xval[13] AND input < xval[14] THEN
+xmax :=xval[14];		xmin := xval[13];		ymax :=yval[14];		ymin := yval[13];
+
+
+ELSE IF input >= xval[14] AND input < xval[15] THEN
+xmax :=xval[15];		xmin := xval[14];		ymax :=yval[15];		ymin := yval[14];
+
+
+ELSE IF input >= xval[15] AND input < xval[16] THEN
+xmax :=xval[16];		xmin := xval[15];		ymax :=yval[16];		ymin := yval[15];
+
+
+ELSE IF input >= xval[16] AND input < xval[17] THEN
+xmax :=xval[17];		xmin := xval[16];		ymax :=yval[17];		ymin := yval[16];
+
+
+ELSE IF input >= xval[17] AND input < xval[18] THEN
+xmax :=xval[18];		xmin := xval[17];		ymax :=yval[18];		ymin := yval[17];
+
+
+ELSE IF input >= xval[18] AND input < xval[19] THEN
+xmax :=xval[19];		xmin := xval[18];		ymax :=yval[19];		ymin := yval[18];
+
+
+ELSE IF input >= xval[19] AND input <= xval[20] THEN
+xmax :=xval[20];		xmin := xval[19];		ymax :=yval[20];		ymin := yval[19];
+
+END_IF	END_IF	END_IF	END_IF	END_IF	END_IF	END_IF	END_IF	END_IF	END_IF
+END_IF	END_IF	END_IF	END_IF	END_IF	END_IF	END_IF	END_IF	END_IF	END_IF
+
+LinScale1(
+	input:=input ,
+	xmax:=REAL_TO_WORD(xmax) ,
+	xmin:= REAL_TO_WORD(xmin),
+	ymax:=REAL_TO_WORD(ymax) ,
+	ymin:= REAL_TO_WORD(ymin),
+	result=>result  ,
+	error=> error);
