@@ -1,0 +1,32 @@
+FUNCTION_BLOCK commCheck
+VAR_INPUT
+	Lbi_Enable: BOOL;
+	Lbi_Resp1: BOOL;
+	Lbi_Resp2: BOOL;
+	Lbi_Resp3: BOOL;
+	Lbi_Resp4: BOOL;
+END_VAR
+VAR_OUTPUT
+	Lbo_Request: BOOL;
+	Lbo_ComErr1: BOOL;
+	Lbo_ComErr2: BOOL;
+	Lbo_ComErr3: BOOL;
+	Lbo_ComErr4: BOOL;
+END_VAR
+VAR
+	Lto_ComErr1: BOOL;
+	Lto_ComErr2: BOOL;
+	Lto_ComErr3: BOOL;
+	Lto_ComErr4: BOOL;
+	TOF1: TOF;
+	TP1: TP;
+	TON1a: TON;
+	TON1b: TON;
+	TON2a: TON;
+	TON2b: TON;
+	TON3a: TON;
+	TON3b: TON;
+	TON4a: TON;
+	TON4b: TON;
+
+END_VAR
