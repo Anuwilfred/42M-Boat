@@ -1,0 +1,60 @@
+FUNCTION_BLOCK fb_comAlarm
+VAR_INPUT
+	LDi_Accoustic1: BOOL;
+	LDi_Accoustic2: BOOL;
+	LDi_Accoustic3: BOOL;
+	LDi_Visual1: BOOL;
+	LDi_Visual2: BOOL;
+	LDi_Visual3: BOOL;
+
+	LDi_BuzStop1:BOOL;
+	LDi_BuzStop2:BOOL;
+	LDi_BuzStop3:BOOL;
+	LDi_BuzStop4: BOOL;
+	LDi_Ack1: BOOL;
+	LDi_Ack2: BOOL;
+	LDi_Ack3: BOOL;
+	LDi_Ack4: BOOL;
+END_VAR
+VAR_OUTPUT
+	LDo_Accoustic1: BOOL;
+	LDo_Accoustic2: BOOL;
+	LDo_Visual1: BOOL;
+	LDo_Visual2: BOOL;
+	LDo_BuzStop: BOOL;
+	LDo_Ack: BOOL;
+END_VAR
+VAR
+END_VAR
+
+
+
+
+
+IF LDi_Accoustic1 OR LDi_Accoustic2 OR LDi_Accoustic3 THEN
+LDo_Accoustic1 := 1;
+LDo_Accoustic2 := 1;
+ELSE
+LDo_Accoustic1 := 0;
+LDo_Accoustic2 := 0;
+END_IF
+
+IF LDi_Visual1 OR LDi_Visual2 OR LDi_Visual3 THEN
+LDo_Visual1 := 1;
+LDo_Visual2 := 1;
+ELSE
+LDo_Visual1 := 0;
+LDo_Visual2 := 0;
+END_IF
+
+IF 	LDi_BuzStop1 OR LDi_BuzStop2 OR LDi_BuzStop3 OR LDi_BuzStop4 THEN
+LDo_BuzStop := 1;
+ELSE
+LDo_BuzStop := 0;
+END_IF
+
+IF LDi_Ack1 OR LDi_Ack2 OR LDi_Ack3 OR LDi_Ack4 THEN
+LDo_Ack := 1;
+ELSE
+LDo_Ack := 0;
+END_IF
