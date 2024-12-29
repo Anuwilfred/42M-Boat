@@ -1,0 +1,29 @@
+FUNCTION_BLOCK fb_linScaleR
+VAR_INPUT
+	input  	: REAL ;
+	xmax  	: REAL ;
+	xmin	: REAL ;
+	ymax	:REAL ;
+	ymin	:REAL ;
+END_VAR
+VAR_OUTPUT
+	result 		: REAL;
+	error : BOOL ;
+END_VAR
+VAR
+	m : REAL ;
+	denominator : REAL ;
+	x : REAL;
+	a: REAL;
+END_VAR
+
+
+
+
+IF xmin = xmax THEN
+	result := ymin;
+	error :=1;
+ELSE
+	result := (ymax - ymin) / (xmax - xmin) * (LIMIT(xmin, input, xmax) - xmin) + ymin;
+	error :=0;
+END_IF;
