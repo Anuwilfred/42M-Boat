@@ -1,0 +1,344 @@
+GVL1.hwo_inhibited := aeGroup0.wo_inhTot + aeGroup1.wo_inhTot + aeGroup2.wo_inhTot + aeGroup3.wo_inhTot
++ aeGroup4.wo_inhTot + aeGroup5.wo_inhTot + aeGroup6.wo_inhTot + aeGroup7.wo_inhTot + aeGroup8.wo_inhTot
+(*+ aeGroup9.wo_inhTot + aeGroup10.wo_inhTot + aeGroup11.wo_inhTot*) + aeGroup12.wo_inhTot + tmGroup0.wo_inhTot 
++ tmGroup1.wo_inhTot + tmGroup2.wo_inhTot + tmGroup3.wo_inhTot + tmGroup4.wo_inhTot + tmGroup5.wo_inhTot 
++ tmGroup6.wo_inhTot + tmGroup7.wo_inhTot + tmGroup8.wo_inhTot + tmGroup9.wo_inhTot + tmGroup10.wo_inhTot
++ tmGroup11.wo_inhTot (*+ tmGroup12.wo_inhTot + tmGroup13.wo_inhTot + tmGroup14.wo_inhTot + tmGroup15.wo_inhTot*);
+ 
+
+
+GVL1.hxo_inhibited := GVL1.hwo_inhibited > 0 ;
+
+aeGroup0.wi_inhibitJm.0	:=	NOT GVL1.hxi_alarmInh[0	];
+aeGroup0.wi_inhibitJm.1	:=	NOT GVL1.hxi_alarmInh[1	];
+aeGroup0.wi_inhibitJm.2	:=	NOT GVL1.hxi_alarmInh[2	];
+aeGroup0.wi_inhibitJm.3	:=	NOT GVL1.hxi_alarmInh[3	];
+aeGroup0.wi_inhibitJm.4	:=	NOT GVL1.hxi_alarmInh[4	];
+aeGroup0.wi_inhibitJm.5	:=	NOT GVL1.hxi_alarmInh[5	];
+aeGroup0.wi_inhibitJm.6	:=	NOT GVL1.hxi_alarmInh[6	];
+aeGroup0.wi_inhibitJm.7	:=	NOT GVL1.hxi_alarmInh[7	];
+aeGroup0.wi_inhibitJm.8	:=	NOT GVL1.hxi_alarmInh[8	];
+aeGroup0.wi_inhibitJm.9	:=	NOT GVL1.hxi_alarmInh[9	];
+aeGroup0.wi_inhibitJm.10	:=	NOT GVL1.hxi_alarmInh[10	];
+aeGroup0.wi_inhibitJm.11	:=	NOT GVL1.hxi_alarmInh[11	];
+aeGroup0.wi_inhibitJm.12	:=	NOT GVL1.hxi_alarmInh[12	];
+aeGroup0.wi_inhibitJm.13	:=	NOT GVL1.hxi_alarmInh[13	];
+aeGroup0.wi_inhibitJm.14	:=	NOT GVL1.hxi_alarmInh[14	];
+aeGroup0.wi_inhibitJm.15	:=	NOT GVL1.hxi_alarmInh[15	];
+			
+aeGroup1.wi_inhibitJm.0	:=	NOT GVL1.hxi_alarmInh[16	];
+aeGroup1.wi_inhibitJm.1	:=	NOT GVL1.hxi_alarmInh[17	];
+aeGroup1.wi_inhibitJm.2	:=	NOT GVL1.hxi_alarmInh[18	];
+aeGroup1.wi_inhibitJm.3	:=	NOT GVL1.hxi_alarmInh[19	];
+aeGroup1.wi_inhibitJm.4	:=	NOT GVL1.hxi_alarmInh[20	];
+aeGroup1.wi_inhibitJm.5	:=	NOT GVL1.hxi_alarmInh[21	];
+aeGroup1.wi_inhibitJm.6	:=	NOT GVL1.hxi_alarmInh[22	];
+aeGroup1.wi_inhibitJm.7	:=	NOT GVL1.hxi_alarmInh[23	];
+aeGroup1.wi_inhibitJm.8	:=	NOT GVL1.hxi_alarmInh[24	];
+aeGroup1.wi_inhibitJm.9	:=	NOT GVL1.hxi_alarmInh[25	];
+aeGroup1.wi_inhibitJm.10	:=	NOT GVL1.hxi_alarmInh[26	];
+aeGroup1.wi_inhibitJm.11	:=	NOT GVL1.hxi_alarmInh[27	];
+aeGroup1.wi_inhibitJm.12	:=	NOT GVL1.hxi_alarmInh[28	];
+aeGroup1.wi_inhibitJm.13	:=	NOT GVL1.hxi_alarmInh[29	];
+aeGroup1.wi_inhibitJm.14	:=	NOT GVL1.hxi_alarmInh[30	];
+aeGroup1.wi_inhibitJm.15	:=	NOT GVL1.hxi_alarmInh[31	];
+			
+aeGroup2.wi_inhibitJm.0	:=	NOT GVL1.hxi_alarmInh[32	];
+aeGroup2.wi_inhibitJm.1	:=	NOT GVL1.hxi_alarmInh[33	];
+aeGroup2.wi_inhibitJm.2	:=	NOT GVL1.hxi_alarmInh[34	];
+aeGroup2.wi_inhibitJm.3	:=	NOT GVL1.hxi_alarmInh[35	];
+aeGroup2.wi_inhibitJm.4	:=	NOT GVL1.hxi_alarmInh[36	];
+aeGroup2.wi_inhibitJm.5	:=	NOT GVL1.hxi_alarmInh[37	];
+aeGroup2.wi_inhibitJm.6	:=	NOT GVL1.hxi_alarmInh[38	];
+aeGroup2.wi_inhibitJm.7	:=	NOT GVL1.hxi_alarmInh[39	];
+aeGroup2.wi_inhibitJm.8	:=	NOT GVL1.hxi_alarmInh[40	];
+aeGroup2.wi_inhibitJm.9	:=	NOT GVL1.hxi_alarmInh[41	];
+aeGroup2.wi_inhibitJm.10	:=	NOT GVL1.hxi_alarmInh[42	];
+aeGroup2.wi_inhibitJm.11	:=	NOT GVL1.hxi_alarmInh[43	];
+aeGroup2.wi_inhibitJm.12	:=	NOT GVL1.hxi_alarmInh[44	];
+aeGroup2.wi_inhibitJm.13	:=	NOT GVL1.hxi_alarmInh[45	];
+aeGroup2.wi_inhibitJm.14	:=	NOT GVL1.hxi_alarmInh[46	];
+aeGroup2.wi_inhibitJm.15	:=	NOT GVL1.hxi_alarmInh[47	];
+			
+aeGroup3.wi_inhibitJm.0	:=	NOT GVL1.hxi_alarmInh[48	];
+aeGroup3.wi_inhibitJm.1	:=	NOT GVL1.hxi_alarmInh[49	];
+aeGroup3.wi_inhibitJm.2	:=	NOT GVL1.hxi_alarmInh[50	];
+aeGroup3.wi_inhibitJm.3	:=	NOT GVL1.hxi_alarmInh[51	];
+aeGroup3.wi_inhibitJm.4	:=	NOT GVL1.hxi_alarmInh[52	];
+aeGroup3.wi_inhibitJm.5	:=	NOT GVL1.hxi_alarmInh[53	];
+aeGroup3.wi_inhibitJm.6	:=	NOT GVL1.hxi_alarmInh[54	];
+aeGroup3.wi_inhibitJm.7	:=	NOT GVL1.hxi_alarmInh[55	];
+aeGroup3.wi_inhibitJm.8	:=	NOT GVL1.hxi_alarmInh[56	];
+aeGroup3.wi_inhibitJm.9	:=	NOT GVL1.hxi_alarmInh[57	];
+aeGroup3.wi_inhibitJm.10	:=	NOT GVL1.hxi_alarmInh[58	];
+aeGroup3.wi_inhibitJm.11	:=	NOT GVL1.hxi_alarmInh[59	];
+aeGroup3.wi_inhibitJm.12	:=	NOT GVL1.hxi_alarmInh[60	];
+aeGroup3.wi_inhibitJm.13	:=	NOT GVL1.hxi_alarmInh[61	];
+aeGroup3.wi_inhibitJm.14	:=	NOT GVL1.hxi_alarmInh[62	];
+aeGroup3.wi_inhibitJm.15	:=	NOT GVL1.hxi_alarmInh[63	];
+			
+aeGroup4.wi_inhibitJm.0	:=	NOT GVL1.hxi_alarmInh[64	];
+aeGroup4.wi_inhibitJm.1	:=	NOT GVL1.hxi_alarmInh[65	];
+aeGroup4.wi_inhibitJm.2	:=	NOT GVL1.hxi_alarmInh[66	];
+aeGroup4.wi_inhibitJm.3	:=	NOT GVL1.hxi_alarmInh[67	];
+aeGroup4.wi_inhibitJm.4	:=	NOT GVL1.hxi_alarmInh[68	];
+aeGroup4.wi_inhibitJm.5	:=	NOT GVL1.hxi_alarmInh[69	];
+aeGroup4.wi_inhibitJm.6	:=	NOT GVL1.hxi_alarmInh[70	];
+aeGroup4.wi_inhibitJm.7	:=	NOT GVL1.hxi_alarmInh[71	];
+aeGroup4.wi_inhibitJm.8	:=	NOT GVL1.hxi_alarmInh[72	];
+aeGroup4.wi_inhibitJm.9	:=	NOT GVL1.hxi_alarmInh[73	];
+aeGroup4.wi_inhibitJm.10	:=	NOT GVL1.hxi_alarmInh[74	];
+aeGroup4.wi_inhibitJm.11	:=	NOT GVL1.hxi_alarmInh[75	];
+aeGroup4.wi_inhibitJm.12	:=	NOT GVL1.hxi_alarmInh[76	];
+aeGroup4.wi_inhibitJm.13	:=	NOT GVL1.hxi_alarmInh[77	];
+aeGroup4.wi_inhibitJm.14	:=	NOT GVL1.hxi_alarmInh[78	];
+aeGroup4.wi_inhibitJm.15	:=	NOT GVL1.hxi_alarmInh[79	];
+			
+aeGroup5.wi_inhibitJm.0	:=	NOT GVL1.hxi_alarmInh[80	];
+aeGroup5.wi_inhibitJm.1	:=	NOT GVL1.hxi_alarmInh[81	];
+aeGroup5.wi_inhibitJm.2	:=	NOT GVL1.hxi_alarmInh[82	];
+aeGroup5.wi_inhibitJm.3	:=	NOT GVL1.hxi_alarmInh[83	];
+aeGroup5.wi_inhibitJm.4	:=	NOT GVL1.hxi_alarmInh[84	];
+aeGroup5.wi_inhibitJm.5	:=	NOT GVL1.hxi_alarmInh[85	];
+aeGroup5.wi_inhibitJm.6	:=	NOT GVL1.hxi_alarmInh[86	];
+aeGroup5.wi_inhibitJm.7	:=	NOT GVL1.hxi_alarmInh[87	];
+aeGroup5.wi_inhibitJm.8	:=	NOT GVL1.hxi_alarmInh[88	];
+aeGroup5.wi_inhibitJm.9	:=	NOT GVL1.hxi_alarmInh[89	];
+aeGroup5.wi_inhibitJm.10	:=	NOT GVL1.hxi_alarmInh[90	];
+aeGroup5.wi_inhibitJm.11	:=	NOT GVL1.hxi_alarmInh[91	];
+aeGroup5.wi_inhibitJm.12	:=	NOT GVL1.hxi_alarmInh[92	];
+aeGroup5.wi_inhibitJm.13	:=	NOT GVL1.hxi_alarmInh[93	];
+aeGroup5.wi_inhibitJm.14	:=	NOT GVL1.hxi_alarmInh[94	];
+aeGroup5.wi_inhibitJm.15	:=	NOT GVL1.hxi_alarmInh[95	];
+			
+aeGroup6.wi_inhibitJm.0	:=	NOT GVL1.hxi_alarmInh[96	];
+aeGroup6.wi_inhibitJm.1	:=	NOT GVL1.hxi_alarmInh[97	];
+aeGroup6.wi_inhibitJm.2	:=	NOT GVL1.hxi_alarmInh[98	];
+aeGroup6.wi_inhibitJm.3	:=	NOT GVL1.hxi_alarmInh[99	];
+aeGroup6.wi_inhibitJm.4	:=	NOT GVL1.hxi_alarmInh[100	];
+aeGroup6.wi_inhibitJm.5	:=	NOT GVL1.hxi_alarmInh[101	];
+aeGroup6.wi_inhibitJm.6	:=	NOT GVL1.hxi_alarmInh[102	];
+aeGroup6.wi_inhibitJm.7	:=	NOT GVL1.hxi_alarmInh[103	];
+aeGroup6.wi_inhibitJm.8	:=	NOT GVL1.hxi_alarmInh[104	];
+aeGroup6.wi_inhibitJm.9	:=	NOT GVL1.hxi_alarmInh[105	];
+aeGroup6.wi_inhibitJm.10	:=	NOT GVL1.hxi_alarmInh[106	];
+aeGroup6.wi_inhibitJm.11	:=	NOT GVL1.hxi_alarmInh[107	];
+aeGroup6.wi_inhibitJm.12	:=	NOT GVL1.hxi_alarmInh[108	];
+aeGroup6.wi_inhibitJm.13	:=	NOT GVL1.hxi_alarmInh[109	];
+aeGroup6.wi_inhibitJm.14	:=	NOT GVL1.hxi_alarmInh[110	];
+aeGroup6.wi_inhibitJm.15	:=	NOT GVL1.hxi_alarmInh[111	];
+			
+aeGroup7.wi_inhibitJm.0	:=	NOT GVL1.hxi_alarmInh[112	];
+aeGroup7.wi_inhibitJm.1	:=	NOT GVL1.hxi_alarmInh[113	];
+aeGroup7.wi_inhibitJm.2	:=	NOT GVL1.hxi_alarmInh[114	];
+aeGroup7.wi_inhibitJm.3	:=	NOT GVL1.hxi_alarmInh[115	];
+aeGroup7.wi_inhibitJm.4	:=	NOT GVL1.hxi_alarmInh[116	];
+aeGroup7.wi_inhibitJm.5	:=	NOT GVL1.hxi_alarmInh[117	];
+aeGroup7.wi_inhibitJm.6	:=	NOT GVL1.hxi_alarmInh[118	];
+aeGroup7.wi_inhibitJm.7	:=	NOT GVL1.hxi_alarmInh[119	];
+aeGroup7.wi_inhibitJm.8	:=	NOT GVL1.hxi_alarmInh[120	];
+aeGroup7.wi_inhibitJm.9	:=	NOT GVL1.hxi_alarmInh[121	];
+aeGroup7.wi_inhibitJm.10	:=	NOT GVL1.hxi_alarmInh[122	];
+aeGroup7.wi_inhibitJm.11	:=	NOT GVL1.hxi_alarmInh[123	];
+aeGroup7.wi_inhibitJm.12	:=	NOT GVL1.hxi_alarmInh[124	];
+aeGroup7.wi_inhibitJm.13	:=	NOT GVL1.hxi_alarmInh[125	];
+aeGroup7.wi_inhibitJm.14	:=	NOT GVL1.hxi_alarmInh[126	];
+aeGroup7.wi_inhibitJm.15	:=	NOT GVL1.hxi_alarmInh[127	];
+			
+aeGroup8.wi_inhibitJm.0	:=	NOT GVL1.hxi_alarmInh[128	];
+aeGroup8.wi_inhibitJm.1	:=	NOT GVL1.hxi_alarmInh[129	];
+aeGroup8.wi_inhibitJm.2	:=	NOT GVL1.hxi_alarmInh[130	];
+aeGroup8.wi_inhibitJm.3	:=	NOT GVL1.hxi_alarmInh[131	];
+aeGroup8.wi_inhibitJm.4	:=	NOT GVL1.hxi_alarmInh[132	];
+aeGroup8.wi_inhibitJm.5	:=	NOT GVL1.hxi_alarmInh[133	];
+aeGroup8.wi_inhibitJm.6	:=	NOT GVL1.hxi_alarmInh[134	];
+aeGroup8.wi_inhibitJm.7	:=	NOT GVL1.hxi_alarmInh[135	];
+aeGroup8.wi_inhibitJm.8	:=	NOT GVL1.hxi_alarmInh[136	];
+aeGroup8.wi_inhibitJm.9	:=	NOT GVL1.hxi_alarmInh[137	];
+aeGroup8.wi_inhibitJm.10	:=	NOT GVL1.hxi_alarmInh[138	];
+aeGroup8.wi_inhibitJm.11	:=	NOT GVL1.hxi_alarmInh[139	];
+aeGroup8.wi_inhibitJm.12	:=	NOT GVL1.hxi_alarmInh[140	];
+aeGroup8.wi_inhibitJm.13	:=	NOT GVL1.hxi_alarmInh[141	];
+aeGroup8.wi_inhibitJm.14	:=	NOT GVL1.hxi_alarmInh[142	];
+aeGroup8.wi_inhibitJm.15	:=	NOT GVL1.hxi_alarmInh[143	];
+			
+aeGroup9.wi_inhibitJm.0	:=	NOT GVL1.hxi_alarmInh[144	];
+aeGroup9.wi_inhibitJm.1	:=	NOT GVL1.hxi_alarmInh[145	];
+aeGroup9.wi_inhibitJm.2	:=	NOT GVL1.hxi_alarmInh[146	];
+aeGroup9.wi_inhibitJm.3	:=	NOT GVL1.hxi_alarmInh[147	];
+aeGroup9.wi_inhibitJm.4	:=	NOT GVL1.hxi_alarmInh[148	];
+aeGroup9.wi_inhibitJm.5	:=	NOT GVL1.hxi_alarmInh[149	];
+aeGroup9.wi_inhibitJm.6	:=	NOT GVL1.hxi_alarmInh[150	];
+aeGroup9.wi_inhibitJm.7	:=	NOT GVL1.hxi_alarmInh[151	];
+aeGroup9.wi_inhibitJm.8	:=	NOT GVL1.hxi_alarmInh[152	];
+aeGroup9.wi_inhibitJm.9	:=	NOT GVL1.hxi_alarmInh[153	];
+aeGroup9.wi_inhibitJm.10	:=	NOT GVL1.hxi_alarmInh[154	];
+aeGroup9.wi_inhibitJm.11	:=	NOT GVL1.hxi_alarmInh[155	];
+aeGroup9.wi_inhibitJm.12	:=	NOT GVL1.hxi_alarmInh[156	];
+aeGroup9.wi_inhibitJm.13	:=	NOT GVL1.hxi_alarmInh[157	];
+aeGroup9.wi_inhibitJm.14	:=	NOT GVL1.hxi_alarmInh[158	];
+aeGroup9.wi_inhibitJm.15	:=	NOT GVL1.hxi_alarmInh[159	];
+			
+aeGroup10.wi_inhibitJm.0	:=	NOT GVL1.hxi_alarmInh[160	];
+aeGroup10.wi_inhibitJm.1	:=	NOT GVL1.hxi_alarmInh[161	];
+aeGroup10.wi_inhibitJm.2	:=	NOT GVL1.hxi_alarmInh[162	];
+aeGroup10.wi_inhibitJm.3	:=	NOT GVL1.hxi_alarmInh[163	];
+aeGroup10.wi_inhibitJm.4	:=	NOT GVL1.hxi_alarmInh[164	];
+aeGroup10.wi_inhibitJm.5	:=	NOT GVL1.hxi_alarmInh[165	];
+aeGroup10.wi_inhibitJm.6	:=	NOT GVL1.hxi_alarmInh[166	];
+aeGroup10.wi_inhibitJm.7	:=	NOT GVL1.hxi_alarmInh[167	];
+aeGroup10.wi_inhibitJm.8	:=	NOT GVL1.hxi_alarmInh[168	];
+aeGroup10.wi_inhibitJm.9	:=	NOT GVL1.hxi_alarmInh[169	];
+aeGroup10.wi_inhibitJm.10	:=	NOT GVL1.hxi_alarmInh[170	];
+aeGroup10.wi_inhibitJm.11	:=	NOT GVL1.hxi_alarmInh[171	];
+aeGroup10.wi_inhibitJm.12	:=	NOT GVL1.hxi_alarmInh[172	];
+aeGroup10.wi_inhibitJm.13	:=	NOT GVL1.hxi_alarmInh[173	];
+aeGroup10.wi_inhibitJm.14	:=	NOT GVL1.hxi_alarmInh[174	];
+aeGroup10.wi_inhibitJm.15	:=	NOT GVL1.hxi_alarmInh[175	];
+			
+aeGroup11.wi_inhibitJm.0	:=	NOT GVL1.hxi_alarmInh[176	];
+aeGroup11.wi_inhibitJm.1	:=	NOT GVL1.hxi_alarmInh[177	];
+aeGroup11.wi_inhibitJm.2	:=	NOT GVL1.hxi_alarmInh[178	];
+aeGroup11.wi_inhibitJm.3	:=	NOT GVL1.hxi_alarmInh[179	];
+aeGroup11.wi_inhibitJm.4	:=	NOT GVL1.hxi_alarmInh[180	];
+aeGroup11.wi_inhibitJm.5	:=	NOT GVL1.hxi_alarmInh[181	];
+aeGroup11.wi_inhibitJm.6	:=	NOT GVL1.hxi_alarmInh[182	];
+aeGroup11.wi_inhibitJm.7	:=	NOT GVL1.hxi_alarmInh[183	];
+aeGroup11.wi_inhibitJm.8	:=	NOT GVL1.hxi_alarmInh[184	];
+aeGroup11.wi_inhibitJm.9	:=	NOT GVL1.hxi_alarmInh[185	];
+aeGroup11.wi_inhibitJm.10	:=	NOT GVL1.hxi_alarmInh[186	];
+aeGroup11.wi_inhibitJm.11	:=	NOT GVL1.hxi_alarmInh[187	];
+aeGroup11.wi_inhibitJm.12	:=	NOT GVL1.hxi_alarmInh[188	];
+aeGroup11.wi_inhibitJm.13	:=	NOT GVL1.hxi_alarmInh[189	];
+aeGroup11.wi_inhibitJm.14	:=	NOT GVL1.hxi_alarmInh[190	];
+aeGroup11.wi_inhibitJm.15	:=	NOT GVL1.hxi_alarmInh[191	];
+			
+aeGroup12.wi_inhibitJm.0	:=	NOT GVL1.hxi_alarmInh[192	];
+aeGroup12.wi_inhibitJm.1	:=	NOT GVL1.hxi_alarmInh[193	];
+aeGroup12.wi_inhibitJm.2	:=	NOT GVL1.hxi_alarmInh[194	];
+aeGroup12.wi_inhibitJm.3	:=	NOT GVL1.hxi_alarmInh[195	];
+aeGroup12.wi_inhibitJm.4	:=	NOT GVL1.hxi_alarmInh[196	];
+aeGroup12.wi_inhibitJm.5	:=	NOT GVL1.hxi_alarmInh[197	];
+aeGroup12.wi_inhibitJm.6	:=	NOT GVL1.hxi_alarmInh[198	];
+aeGroup12.wi_inhibitJm.7	:=	NOT GVL1.hxi_alarmInh[199	];
+aeGroup12.wi_inhibitJm.8	:=	NOT GVL1.hxi_alarmInh[200	];
+aeGroup12.wi_inhibitJm.9	:=	NOT GVL1.hxi_alarmInh[201	];
+aeGroup12.wi_inhibitJm.10	:=	NOT GVL1.hxi_alarmInh[202	];
+aeGroup12.wi_inhibitJm.11	:=	NOT GVL1.hxi_alarmInh[203	];
+aeGroup12.wi_inhibitJm.12	:=	NOT GVL1.hxi_alarmInh[204	];
+aeGroup12.wi_inhibitJm.13	:=	NOT GVL1.hxi_alarmInh[205	];
+aeGroup12.wi_inhibitJm.14	:=	NOT GVL1.hxi_alarmInh[206	];
+aeGroup12.wi_inhibitJm.15	:=	NOT GVL1.hxi_alarmInh[207	];
+			
+tmGroup0.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[208	];
+tmGroup0.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[209	];
+tmGroup0.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[210	];
+tmGroup0.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[211	];
+tmGroup0.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[212	];
+tmGroup0.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[213	];
+			
+tmGroup1.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[214	];
+tmGroup1.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[215	];
+tmGroup1.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[216	];
+tmGroup1.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[217	];
+tmGroup1.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[218	];
+tmGroup1.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[219	];
+			
+tmGroup2.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[220	];
+tmGroup2.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[221	];
+tmGroup2.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[222	];
+tmGroup2.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[223	];
+tmGroup2.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[224	];
+tmGroup2.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[225	];
+			
+tmGroup3.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[226	];
+tmGroup3.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[227	];
+tmGroup3.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[228	];
+tmGroup3.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[229	];
+tmGroup3.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[230	];
+tmGroup3.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[231	];
+			
+tmGroup4.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[232	];
+tmGroup4.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[233	];
+tmGroup4.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[234	];
+tmGroup4.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[235	];
+tmGroup4.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[236	];
+tmGroup4.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[237	];
+			
+tmGroup5.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[238	];
+tmGroup5.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[239	];
+tmGroup5.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[240	];
+tmGroup5.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[241	];
+tmGroup5.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[242	];
+tmGroup5.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[243	];
+			
+tmGroup6.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[244	];
+tmGroup6.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[245	];
+tmGroup6.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[246	];
+tmGroup6.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[247	];
+tmGroup6.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[248	];
+tmGroup6.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[249	];
+			
+tmGroup7.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[250	];
+tmGroup7.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[251	];
+tmGroup7.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[252	];
+tmGroup7.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[253	];
+tmGroup7.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[254	];
+tmGroup7.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[255	];
+			
+tmGroup8.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[256	];
+tmGroup8.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[257	];
+tmGroup8.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[258	];
+tmGroup8.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[259	];
+tmGroup8.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[260	];
+tmGroup8.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[261	];
+			
+tmGroup9.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[262	];
+tmGroup9.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[263	];
+tmGroup9.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[264	];
+tmGroup9.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[265	];
+tmGroup9.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[266	];
+tmGroup9.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[267	];
+			
+tmGroup10.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[268	];
+tmGroup10.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[269	];
+tmGroup10.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[270	];
+tmGroup10.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[271	];
+tmGroup10.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[272	];
+tmGroup10.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[273	];
+			
+tmGroup11.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[274	];
+tmGroup11.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[275	];
+tmGroup11.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[276	];
+tmGroup11.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[277	];
+tmGroup11.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[278	];
+tmGroup11.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[279	];
+			
+tmGroup12.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[280	];
+tmGroup12.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[281	];
+tmGroup12.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[282	];
+tmGroup12.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[283	];
+tmGroup12.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[284	];
+tmGroup12.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[285	];
+			
+tmGroup13.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[286	];
+tmGroup13.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[287	];
+tmGroup13.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[288	];
+tmGroup13.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[289	];
+tmGroup13.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[290	];
+tmGroup13.wi_chParaJm.10	:=	NOT GVL1.hxi_alarmInh[291	];
+			
+tmGroup14.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[292	];
+tmGroup14.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[293	];
+tmGroup14.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[294	];
+tmGroup14.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[295	];
+tmGroup14.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[296	];
+tmGroup14.wi_chParaJm.5	:=	NOT GVL1.hxi_alarmInh[297	];
+			
+tmGroup15.wi_chParaJm.0	:=	NOT GVL1.hxi_alarmInh[298	];
+tmGroup15.wi_chParaJm.1	:=	NOT GVL1.hxi_alarmInh[299	];
+tmGroup15.wi_chParaJm.2	:=	NOT GVL1.hxi_alarmInh[300	];
+tmGroup15.wi_chParaJm.3	:=	NOT GVL1.hxi_alarmInh[301	];
+tmGroup15.wi_chParaJm.4	:=	NOT GVL1.hxi_alarmInh[302	];
+tmGroup15.wi_chParaJm.5	:=	NOT GVL1.hxi_alarmInh[303	];
+
