@@ -1,0 +1,160 @@
+lx_ack := GVL1.hxi_ack OR GVL1.hxi_ackEr ;
+(*ER*)
+buzzerSet1(
+	Lwi_AlarmBuzzer:= lwo_dialmBuzzer, 
+	Lwi_AlarmInd:= lwo_dialmInd, 
+	LDi_Ack:= comAlarm.LDo_BuzStop, 
+	LDo_Acoustic=> , 
+	LDo_Visual=> );
+buzzerSet2(
+	Lwi_AlarmBuzzer:= lwo_aialmBuzzer, 
+	Lwi_AlarmInd:= lwo_aialmInd, 
+	LDi_Ack:= comAlarm.LDo_BuzStop, 
+	LDo_Acoustic=> , 
+	LDo_Visual=> );
+	
+comAlarm(
+	LDi_Accoustic1:= buzzerSet1.LDo_Acoustic, 
+	LDi_Accoustic2:= buzzerSet2.LDo_Acoustic, 
+	LDi_Accoustic3:= , 
+	LDi_Visual1:= buzzerSet1.LDo_Visual, 
+	LDi_Visual2:= buzzerSet2.LDo_Visual, 
+	LDi_Visual3:= , 
+	LDi_BuzStop1:= GVL1.hxi_silence OR GVL1.hxi_silenceEr OR GVL1.Pwi_DigitalInputs[7].15, 
+	LDi_BuzStop2:= GVL1.hxi_ack OR GVL1.hxi_ackEr, 
+	LDi_BuzStop3:= , 
+	LDi_BuzStop4:= , 
+	LDi_Ack1:= GVL1.hxi_ack, 
+	LDi_Ack2:= , 
+	LDi_Ack3:= , 
+	LDi_Ack4:= , 
+	LDo_Accoustic1=> , 
+	LDo_Accoustic2=> , 
+	LDo_Visual1=> , 
+	LDo_Visual2=> , 
+	LDo_BuzStop=> , 
+	LDo_Ack=> );
+	
+(*WH*)
+buzzerSet3(
+	Lwi_AlarmBuzzer:= lwo_dialmBuzzer, 
+	Lwi_AlarmInd:= lwo_dialmInd, 
+	LDi_Ack:= comAlarm1.LDo_BuzStop, 
+	LDo_Acoustic=> , 
+	LDo_Visual=> );
+buzzerSet4(
+	Lwi_AlarmBuzzer:= lwo_aialmBuzzer, 
+	Lwi_AlarmInd:= lwo_aialmInd, 
+	LDi_Ack:= comAlarm1.LDo_BuzStop, 
+	LDo_Acoustic=> , 
+	LDo_Visual=> );
+	
+comAlarm1(
+	LDi_Accoustic1:= buzzerSet3.LDo_Acoustic, 
+	LDi_Accoustic2:= buzzerSet4.LDo_Acoustic, 
+	LDi_Accoustic3:= , 
+	LDi_Visual1:= buzzerSet3.LDo_Visual, 
+	LDi_Visual2:= buzzerSet4.LDo_Visual, 
+	LDi_Visual3:= , 
+	LDi_BuzStop1:= GVL1.hxi_silence  OR GVL1.hxi_silenceEr OR GVL1.hxi_silenceWh OR GVL1.Pwi_DigitalInputs[7].15 OR GVL1.Pwi_DigitalInputs[6].15 , 
+	LDi_BuzStop2:= GVL1.hxi_ack OR GVL1.hxi_ackWh OR GVL1.hxi_ackEr, 
+	LDi_BuzStop3:= , 
+	LDi_BuzStop4:= , 
+	LDi_Ack1:= GVL1.hxi_ack, 
+	LDi_Ack2:= GVL1.hxi_ackWh, 
+	LDi_Ack3:= GVL1.hxi_ackEr, 
+	LDi_Ack4:= , 
+	LDo_Accoustic1=> , 
+	LDo_Accoustic2=> , 
+	LDo_Visual1=> , 
+	LDo_Visual2=> , 
+	LDo_BuzStop=> , 
+	LDo_Ack=> GVL1.hxi_ackWhout);	
+
+(*MESS*)
+buzzerSet5(
+	Lwi_AlarmBuzzer:= lwo_dialmBuzzer, 
+	Lwi_AlarmInd:= lwo_dialmInd, 
+	LDi_Ack:= comAlarm2.LDo_BuzStop, 
+	LDo_Acoustic=> , 
+	LDo_Visual=> );
+buzzerSet6(
+	Lwi_AlarmBuzzer:= lwo_aialmBuzzer, 
+	Lwi_AlarmInd:= lwo_aialmInd, 
+	LDi_Ack:= comAlarm2.LDo_BuzStop, 
+	LDo_Acoustic=> , 
+	LDo_Visual=> );
+	
+comAlarm2(
+	LDi_Accoustic1:= buzzerSet5.LDo_Acoustic, 
+	LDi_Accoustic2:= buzzerSet6.LDo_Acoustic, 
+	LDi_Accoustic3:= , 
+	LDi_Visual1:= buzzerSet5.LDo_Visual, 
+	LDi_Visual2:= buzzerSet6.LDo_Visual, 
+	LDi_Visual3:= , 
+	LDi_BuzStop1:= GVL1.hxi_silence  OR GVL1.hxi_silenceEr OR GVL1.hxi_silenceMess OR GVL1.Pwi_DigitalInputs[7].15  , 
+	LDi_BuzStop2:= GVL1.hxi_ack OR GVL1.hxi_ackMess OR GVL1.hxi_ackEr, 
+	LDi_BuzStop3:= , 
+	LDi_BuzStop4:= , 
+	LDi_Ack1:= GVL1.hxi_ack, 
+	LDi_Ack2:= GVL1.hxi_ackMess, 
+	LDi_Ack3:= GVL1.hxi_ackEr, 
+	LDi_Ack4:= , 
+	LDo_Accoustic1=> , 
+	LDo_Accoustic2=> , 
+	LDo_Visual1=> , 
+	LDo_Visual2=> , 
+	LDo_BuzStop=> , 
+	LDo_Ack=> GVL1.hxi_ackMessout );
+
+(*CE ROOM*)
+buzzerSet7(
+	Lwi_AlarmBuzzer:= lwo_dialmBuzzer, 
+	Lwi_AlarmInd:= lwo_dialmInd, 
+	LDi_Ack:= comAlarm3.LDo_BuzStop, 
+	LDo_Acoustic=> , 
+	LDo_Visual=> );
+buzzerSet8(
+	Lwi_AlarmBuzzer:= lwo_aialmBuzzer, 
+	Lwi_AlarmInd:= lwo_aialmInd, 
+	LDi_Ack:= comAlarm3.LDo_BuzStop, 
+	LDo_Acoustic=> , 
+	LDo_Visual=> );
+	
+comAlarm3(
+	LDi_Accoustic1:= buzzerSet7.LDo_Acoustic, 
+	LDi_Accoustic2:= buzzerSet8.LDo_Acoustic, 
+	LDi_Accoustic3:= , 
+	LDi_Visual1:= buzzerSet7.LDo_Visual, 
+	LDi_Visual2:= buzzerSet8.LDo_Visual, 
+	LDi_Visual3:= , 
+	LDi_BuzStop1:= GVL1.hxi_silence  OR GVL1.hxi_silenceEr  OR GVL1.Pwi_DigitalInputs[7].15 OR GVL1.Pwi_DigitalInputs[7].3  , 
+	LDi_BuzStop2:= GVL1.hxi_ack OR GVL1.hxi_ackEr, 
+	LDi_BuzStop3:= , 
+	LDi_BuzStop4:= , 
+	LDi_Ack1:= GVL1.hxi_ack, 
+	LDi_Ack2:= GVL1.hxi_ackEr, 
+	LDi_Ack3:= , 
+	LDi_Ack4:= , 
+	LDo_Accoustic1=> , 
+	LDo_Accoustic2=> , 
+	LDo_Visual1=> , 
+	LDo_Visual2=> , 
+	LDo_BuzStop=> , 
+	LDo_Ack=>  );
+	
+GVL1.hxo_alarmInd := comAlarm.LDo_Accoustic1;
+GVL1.hxo_alarmIndwh := comAlarm1.LDo_Accoustic1;
+GVL1.hxo_alarmIndMess := comAlarm2.LDo_Accoustic1;
+
+commCheck1(
+	Lbi_Enable:= TRUE, 
+	Lbi_Resp1:= GVL1.Hbi_HMI1Resp, 
+	Lbi_Resp2:= GVL1.Hbi_HMI2Resp, 
+	Lbi_Resp3:= GVL1.Hbi_HMI3Resp, 
+	Lbi_Resp4:= , 
+	Lbo_Request=> GVL1.Hbo_HMITest, 
+	Lbo_ComErr1=> , 
+	Lbo_ComErr2=> , 
+	Lbo_ComErr3=> , 
+	Lbo_ComErr4=> );
