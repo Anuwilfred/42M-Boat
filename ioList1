@@ -1,0 +1,275 @@
+Digital input module JB1 - S3306: 16CH							
+GVL1.Pwi_DigitalInputs[0].0	 := NOT w_im1IOStatus.0	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:01	STEERING CP: PHASE FAIL MOTOR 1	*)
+GVL1.Pwi_DigitalInputs[0].1	 := NOT w_im1IOStatus.1	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:02	STEERING CP: POWER FAIL MOTOR 1	*)
+GVL1.Pwi_DigitalInputs[0].2	 := NOT w_im1IOStatus.2	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:03	STEERING CP: CONTROL FAIL MOTOR 1	*)
+GVL1.Pwi_DigitalInputs[0].3	 := NOT w_im1IOStatus.3	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:04	STEERING CP: OVERLOAD MOTOR 1	*)
+GVL1.Pwi_DigitalInputs[0].4	 := NOT w_im1IOStatus.4	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:05	STEERING CP: PHASE FAIL MOTOR 2	*)
+GVL1.Pwi_DigitalInputs[0].5	 := NOT w_im1IOStatus.5	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:06	STEERING CP: POWER FAIL MOTOR 2	*)
+GVL1.Pwi_DigitalInputs[0].6	 := NOT w_im1IOStatus.6	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:07	STEERING CP: CONTROL FAIL MOTOR 2	*)
+GVL1.Pwi_DigitalInputs[0].7	 := NOT w_im1IOStatus.7	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:08	STEERING CP: OVERLOAD MOTOR 2	*)
+GVL1.Pwi_DigitalInputs[0].8	 := NOT w_im1IOStatus.8	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:09	STEERING CP: LOW OIL LEVEL ALARM	*)
+GVL1.Pwi_DigitalInputs[0].9	 := NOT w_im1IOStatus.9	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:10	STEERING CP: HIGH OIL TEMP ALARM	*)
+GVL1.Pwi_DigitalInput///s[0].10	 := NOT w_im1IOStatus.10	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:11	STEERING CP: LOW OIL PRESSURE ALARM	*)
+GVL1.Pwi_DigitalInputs[0].11	 := NOT w_im1IOStatus.11	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:12	STEERING ROOM PORT BILGE ALARM	*)
+GVL1.Pwi_DigitalInputs[0].12	 := NOT w_im1IOStatus.12	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:13	STEERING ROOM STBD BILGE ALARM	*)
+GVL1.Pwi_DigitalInputs[0].13	 := NOT w_im1IOStatus.13	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:14	STBD GENSET STARTING BATTERY VOLTAGE LOW	*)
+GVL1.Pwi_DigitalInputs[0].14	 := NOT w_im1IOStatus.14	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:15	STEERING ROOM FWD WT DOOR	*)
+GVL1.Pwi_DigitalInputs[0].15	 := NOT w_im1IOStatus.15	AND NOT GVL1.hwo_digitalAlarms[12].0	;	(*	DI:16	ENG ROOM AFT WT DOOR	*)
+//Digital input module JB2 - S3306: 16CH							
+GVL1.Pwi_DigitalInputs[1].0	 := NOT w_im2IOStatus.0	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:17	GEN ROOM PORT BILGE ALARM	*)
+GVL1.Pwi_DigitalInputs[1].1	 := NOT w_im2IOStatus.1	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:18	GEN ROOM STBD BILGE ALARM	*)
+GVL1.Pwi_DigitalInputs[1].2	 := NOT w_im2IOStatus.2	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:19	PORT GEN COMMON/SD ALARM	*)
+GVL1.Pwi_DigitalInputs[1].3	 := NOT w_im2IOStatus.3	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:20	PORT GEN RUNNING INDICATION	*)
+GVL1.Pwi_DigitalInputs[1].4	 := NOT w_im2IOStatus.4	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:21	ENG ROOM GEN COMMON/SD ALARM	*)
+GVL1.Pwi_DigitalInputs[1].5	 := NOT w_im2IOStatus.5	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:22	ENG ROOM GEN RUNNING INDICATION	*)
+GVL1.Pwi_DigitalInputs[1].6	 := NOT w_im2IOStatus.6	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:23	DCDB-2 BATTERY BREAKER TRIP ALARM	*)
+GVL1.Pwi_DigitalInputs[1].7	 := NOT w_im2IOStatus.7	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:24	DCDB-2 EARTH FAULT ALARM	*)
+GVL1.Pwi_DigitalInputs[1].8	 := NOT w_im2IOStatus.8	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:25	DCDB-2 BATTERY CHARGER FAIL/DISCH ALARM	*)
+GVL1.Pwi_DigitalInputs[1].9	 := NOT w_im2IOStatus.9	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:26	DCDB-2 BATTERY LOW VOLT ALARM	*)
+GVL1.Pwi_DigitalInputs[1].10	:= NOT w_im2IOStatus.10	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:27	STDB GEN COMMON/SD ALARM	*)
+GVL1.Pwi_DigitalInputs[1].11	:= NOT w_im2IOStatus.11	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:28	STBD GEN RUNNING INDICATION	*)
+GVL1.Pwi_DigitalInputs[1].12	:= NOT w_im2IOStatus.12	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:29	PORT GEN EXH. TEMP HIGH	*)
+GVL1.Pwi_DigitalInputs[1].13	:= NOT w_im2IOStatus.13	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:30	STBD GEN EXH. TEMP HIGH	*)
+GVL1.Pwi_DigitalInputs[1].14	:= NOT w_im2IOStatus.14	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:31	AUX COOLING PUMP-2 RUNNING	*)
+GVL1.Pwi_DigitalInputs[1].15	:= NOT w_im2IOStatus.15	AND NOT GVL1.hwo_digitalAlarms[12].1	;	(*	DI:32	AUX COOLING PUMP-2 TRIP	*)
+//Digital input module JB3 - S3306: 16CH							
+GVL1.Pwi_DigitalInputs[2].0	:= NOT w_im3IOStatus.0	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:33	MSB: PREF. TRIP ALARM	*)
+GVL1.Pwi_DigitalInputs[2].1	:= NOT w_im3IOStatus.1	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:34	MSB: 380 VAC EARTH FAULT ALARM	*)
+GVL1.Pwi_DigitalInputs[2].2	:= NOT w_im3IOStatus.2	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:35	MSB: 24 VDC SUPPLY FAIL ALARM	*)
+GVL1.Pwi_DigitalInputs[2].3	:= NOT w_im3IOStatus.3	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:36	MSB: ABNORMAL ALARM	*)
+GVL1.Pwi_DigitalInputs[2].4	:= NOT w_im3IOStatus.4	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:37	MSB: 230 VAC EARTH FAULT ALARM	*)
+GVL1.Pwi_DigitalInputs[2].5	:= NOT w_im3IOStatus.5	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:38	STBD STERNTUBE FLOW ALARM	*)
+GVL1.Pwi_DigitalInputs[2].6	:= NOT w_im3IOStatus.6	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:39	STBD ME EXH. TEMP HIGH ALARM	*)
+GVL1.Pwi_DigitalInputs[2].7	:= NOT w_im3IOStatus.7	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:40	ENG ROOM AFT BILGE ALARM	*)
+GVL1.Pwi_DigitalInputs[2].8	:= NOT w_im3IOStatus.8	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:41	ENG ROOM AFT FLOOD ALARM	*)
+GVL1.Pwi_DigitalInputs[2].9	:= NOT w_im3IOStatus.9	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:42	PORT ME STARTING BATTERY LOW ALARM	*)
+GVL1.Pwi_DigitalInputs[2].10	:= NOT w_im3IOStatus.10	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:43	STBD ME STARTING BATTERY LOW ALARM	*)
+GVL1.Pwi_DigitalInputs[2].11	:= NOT w_im3IOStatus.11	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:44	CENTER ME STARTING BATTERY LOW ALARM	*)
+GVL1.Pwi_DigitalInputs[2].12	:= NOT w_im3IOStatus.12	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:45	OWS COMMON ALARM	*)
+GVL1.Pwi_DigitalInputs[2].13	:= NOT w_im3IOStatus.13	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:46	OWS 15 PPM ALARM	*)
+GVL1.Pwi_DigitalInputs[2].14	:= NOT w_im3IOStatus.14	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:47	AUX COOLING PUMP-1 RUNNING	*)
+GVL1.Pwi_DigitalInputs[2].15	:= NOT w_im3IOStatus.15	AND NOT GVL1.hwo_digitalAlarms[12].2	;	(*	DI:48	AUX COOLING PUMP-1 TRIP	*)
+//Digital input module JB4 - S3306: 16CH							
+GVL1.Pwi_DigitalInputs[3].0	:= NOT w_im4IOStatus.0	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:49	PROPULSION SYSTEM POWER SUPPLY FAIL	*)
+GVL1.Pwi_DigitalInputs[3].1	:= NOT w_im4IOStatus.1	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:50	ENG.ROOM FWD BILGE ALARM	*)
+GVL1.Pwi_DigitalInputs[3].2	:= NOT w_im4IOStatus.2	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:51	ENG.ROOM FWD FLOOD ALARM	*)
+GVL1.Pwi_DigitalInputs[3].3	:= NOT w_im4IOStatus.3	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:52	CENTER STERNTUBE FLOW ALARM	*)
+GVL1.Pwi_DigitalInputs[3].4	:= NOT w_im4IOStatus.4	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:53	CENTER ME EXH. TEMP HIGH ALARM	*)
+GVL1.Pwi_DigitalInputs[3].5	:= NOT w_im4IOStatus.5	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:54	PORT ME EXH. TEMP HIGH ALARM	*)
+GVL1.Pwi_DigitalInputs[3].6	:= NOT w_im4IOStatus.6	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:55	PORT STERNTUBE FLOW ALARM	*)
+GVL1.Pwi_DigitalInputs[3].7	:= NOT w_im4IOStatus.7	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:56	BT COMMON ALARM	*)
+GVL1.Pwi_DigitalInputs[3].8	:= NOT w_im4IOStatus.8	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:57	BT LOW OIL LEVEL ALARM	*)
+GVL1.Pwi_DigitalInputs[3].9	:= NOT w_im4IOStatus.9	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:58	BT HIGH OIL TEMP ALARM	*)
+GVL1.Pwi_DigitalInputs[3].10	:= NOT w_im4IOStatus.10	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:59	BT EMG STOP ALARM	*)
+GVL1.Pwi_DigitalInputs[3].11	:= NOT w_im4IOStatus.11	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:60	ENG ROOM GEN EXH. TEMP HIGH	*)
+GVL1.Pwi_DigitalInputs[3].12	:= NOT w_im4IOStatus.12	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:61	SPARE	*)
+GVL1.Pwi_DigitalInputs[3].13	:= NOT w_im4IOStatus.13	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:62	PORT  GENERATOR STARTING BATTERY LOW ALARM	*)
+GVL1.Pwi_DigitalInputs[3].14	:= NOT w_im4IOStatus.14	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:63	SPARE	*)
+GVL1.Pwi_DigitalInputs[3].15	:= NOT w_im4IOStatus.15	AND NOT GVL1.hwo_digitalAlarms[12].3	;	(*	DI:64	ENG ROOM FWD WT DOOR	*)
+//Digital input module JB5 - S3306: 16CH							
+GVL1.Pwi_DigitalInputs[4].0	:= NOT w_im5IOStatus.0	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:65	GALLEY A/C FIRE DAMPER CLOSED ALARM	*)
+GVL1.Pwi_DigitalInputs[4].1	:= NOT w_im5IOStatus.1	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:66	WINDLASS COMMON ALARM	*)
+GVL1.Pwi_DigitalInputs[4].2	:= NOT w_im5IOStatus.2	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:67	BT COMPT BILGE ALARM	*)
+GVL1.Pwi_DigitalInputs[4].3	:= NOT w_im5IOStatus.3	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:68   FWD STORE AFT BILGE  ALARM	*)
+GVL1.Pwi_DigitalInputs[4].4	:= NOT w_im5IOStatus.4	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:69	FWD STORE CENTRE BILGE ALARM	*)
+GVL1.Pwi_DigitalInputs[4].5	:= NOT w_im5IOStatus.5	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:70	DCDB1 SEC-1 BAT.CHARGER FAILURE ALARM	*)
+GVL1.Pwi_DigitalInputs[4].6	:= NOT w_im5IOStatus.6	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:71	DCDB1 SEC-1 BAT. DISCHARGE ALARM	*)
+GVL1.Pwi_DigitalInputs[4].7	:= NOT w_im5IOStatus.7	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:72	DCDB1 SEC-1 BAT. LOW VOLT ALARM	*)
+GVL1.Pwi_DigitalInputs[4].8	:= NOT w_im5IOStatus.8	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:73	DCDB1 SEC-1 BAT. BANK CB TRIP ALARM	*)
+GVL1.Pwi_DigitalInputs[4].9	:= NOT w_im5IOStatus.9	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:74	DCDB1 SEC-2 BAT.CHARGER FAILURE ALARM	*)
+GVL1.Pwi_DigitalInputs[4].10	:= NOT w_im5IOStatus.10	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:75	DCDB1 SEC-2 BAT. DISCHARGE ALARM	*)
+GVL1.Pwi_DigitalInputs[4].11	:= NOT w_im5IOStatus.11	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:76	DCDB1 SEC-2 BAT. LOW VOLT ALARM	*)
+GVL1.Pwi_DigitalInputs[4].12	:= NOT w_im5IOStatus.12	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:77	DCDB1 SEC-2 BAT. BANK CB TRIP ALARM	*)
+GVL1.Pwi_DigitalInputs[4].13	:= NOT w_im5IOStatus.13	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:78	SEC-1 AND SEC-2 EARTH FAULT	*)
+GVL1.Pwi_DigitalInputs[4].14	:= NOT w_im5IOStatus.14	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:79	ACCOM AREA FWD WT DOOR	*)
+GVL1.Pwi_DigitalInputs[4].15	:= NOT w_im5IOStatus.15	AND NOT GVL1.hwo_digitalAlarms[12].4	;	(*	DI:80	FWD STORE WT DOOR	*)
+							
+//Digital input module JB6 - S3306: 16CH							
+GVL1.Pwi_DigitalInputs[5].0	:= NOT w_im6IOStatus.0	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:81	PUMP ROOM AFT PORT BILGE ALARM	*)
+GVL1.Pwi_DigitalInputs[5].1	:= NOT w_im6IOStatus.1	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:82	PUMP ROOM AFT STBD BILGE ALARM	*)
+GVL1.Pwi_DigitalInputs[5].2	:= NOT w_im6IOStatus.2	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:83	VOID SPACE PUMP RM FWD PORT BILGE ALARM	*)
+GVL1.Pwi_DigitalInputs[5].3	:= NOT w_im6IOStatus.3	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:84	VOID SPACE PUMP RM FWD STBD BILGE ALARM	*)
+GVL1.Pwi_DigitalInputs[5].4	:= NOT w_im6IOStatus.4	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:85	ACCOM AREA AFT BILGE ALARM	*)
+GVL1.Pwi_DigitalInputs[5].5	:= NOT w_im6IOStatus.5	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:86	A/C SYSTEM COMMON ALARM	*)
+GVL1.Pwi_DigitalInputs[5].6	:= NOT w_im6IOStatus.6	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:87	FO PURIFIER COMMON ALARM	*)
+GVL1.Pwi_DigitalInputs[5].7	:= NOT w_im6IOStatus.7	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:88	STP OVERFLOW ALARM	*)
+GVL1.Pwi_DigitalInputs[5].8	:= NOT w_im6IOStatus.8	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:89	GAS DETECTION SYS COMMON ALARM	*)
+GVL1.Pwi_DigitalInputs[5].9	:= NOT w_im6IOStatus.9	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:90	GAS DETECTION SYS ACTIVATED LEVEL-1	*)
+GVL1.Pwi_DigitalInputs[5].10	:= NOT w_im6IOStatus.10	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:91	GAS DETECTION SYS ACTIVATED LEVEL-2	*)
+GVL1.Pwi_DigitalInputs[5].11	:= NOT w_im6IOStatus.11	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:92	MAN TRAP ALARM: FREEZER ROOM	*)
+GVL1.Pwi_DigitalInputs[5].12	:= NOT w_im6IOStatus.12	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:93	FREEZER COMMON ALARM	*)
+GVL1.Pwi_DigitalInputs[5].13	:= NOT w_im6IOStatus.13	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:94	SPARE	*)
+GVL1.Pwi_DigitalInputs[5].14	:= NOT w_im6IOStatus.14	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:95	SPARE	*)
+GVL1.Pwi_DigitalInputs[5].15	:= NOT w_im6IOStatus.15	AND NOT GVL1.hwo_digitalAlarms[12].5	;	(*	DI:96	PUMP ROOM FWD WT DOOR	*)
+//Digital input module WH - S3306: 16CH							
+GVL1.Pwi_DigitalInputs[6].0	:= NOT w_im7IOStatus.0	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:97	CO2 ROOM FAN TRIP ALARM	*)
+GVL1.Pwi_DigitalInputs[6].1	:= NOT w_im7IOStatus.1	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:98	ENG ROOM CO2 RELEASE EVAC. ALARM	*)
+GVL1.Pwi_DigitalInputs[6].2	:= NOT w_im7IOStatus.2	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:99	GEN ROOM CO2 RELEASE EVAC. ALARM	*)
+GVL1.Pwi_DigitalInputs[6].3	:= NOT w_im7IOStatus.3	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:100	CO2 LEAKAGE ALARM	*)
+GVL1.Pwi_DigitalInputs[6].4	:= NOT w_im7IOStatus.4	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:101	ENG ROOM CO2 RELEASED ALARM	*)
+GVL1.Pwi_DigitalInputs[6].5	:= NOT w_im7IOStatus.5	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:102	GEN ROOM CO2 RELEASED ALARM	*)
+GVL1.Pwi_DigitalInputs[6].6	:= NOT w_im7IOStatus.6	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:103	CO2 SYSTEM POWER FAILURE	*)
+GVL1.Pwi_DigitalInputs[6].7	:= NOT w_im7IOStatus.7	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:104	GA MAIN POWER FAILURE	*)
+GVL1.Pwi_DigitalInputs[6].8	:= NOT w_im7IOStatus.8	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:105	GA ALTERNATE POWER FAILURE	*)
+GVL1.Pwi_DigitalInputs[6].9	:= NOT w_im7IOStatus.9	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:106	NAV. LIGHT PANEL: POWER FAILURE	*)
+GVL1.Pwi_DigitalInputs[6].10	:= NOT w_im7IOStatus.10	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:107	NAV. LIGHT PANEL: LIGHT FAIL	*)
+GVL1.Pwi_DigitalInputs[6].11	:= NOT w_im7IOStatus.11	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:108	STGR JOYSTICK CTRL FAIL	*)
+GVL1.Pwi_DigitalInputs[6].12	:= NOT w_im7IOStatus.12	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:109	FIRE ALARM SYSTEM FAULT	*)
+GVL1.Pwi_DigitalInputs[6].13	:= NOT w_im7IOStatus.13	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:110	FIRE ALARM ACTIVATED	*)
+GVL1.Pwi_DigitalInputs[6].14	:= NOT w_im7IOStatus.14	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:111	AUTO PILOT FAIL ALARM	*)
+GVL1.Pwi_DigitalInputs[6].15	:= NOT w_im7IOStatus.15	AND NOT GVL1.hwo_digitalAlarms[12].6	;	(*	DI:112	WH ALARM MUTE	*)
+//Digital input module1  MP- S3306: 16CH							
+GVL1.Pwi_DigitalInputs[7].0	:= NOT w_im8IOstatus.0	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:113	PORT ME COMMON ALARM	*)
+GVL1.Pwi_DigitalInputs[7].1	:= NOT w_im8IOstatus.1	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:114	STBD ME COMMON ALARM	*)
+GVL1.Pwi_DigitalInputs[7].2	:= NOT w_im8IOstatus.2	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:115	CENTER ME COMMON ALARM	*)
+GVL1.Pwi_DigitalInputs[7].3	:= NOT w_im8IOstatus.3	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:116	CHIEF ENG. ROOM ALARM MUTE	*)
+GVL1.Pwi_DigitalInputs[7].4	:= NOT w_im8IOstatus.4	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:117	SPARE	*)
+GVL1.Pwi_DigitalInputs[7].5	:= NOT w_im8IOstatus.5	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:118	SPARE	*)
+GVL1.Pwi_DigitalInputs[7].6	:= NOT w_im8IOstatus.6	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:119	SPARE	*)
+GVL1.Pwi_DigitalInputs[7].7	:= NOT w_im8IOstatus.7	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:120	SPARE	*)
+GVL1.Pwi_DigitalInputs[7].8	:= NOT w_im8IOstatus.8	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:121	SPARE	*)
+GVL1.Pwi_DigitalInputs[7].9	:= NOT w_im8IOstatus.9	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:122	SPARE	*)
+GVL1.Pwi_DigitalInputs[7].10	:= NOT w_im8IOstatus.10	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:123	SPARE	*)
+GVL1.Pwi_DigitalInputs[7].11	:= NOT w_im8IOstatus.11	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:124	SAPRE	*)
+GVL1.Pwi_DigitalInputs[7].12	:= NOT w_im8IOstatus.12	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:125	AMS REDUNDANCY MODULE ALARM	*)
+GVL1.Pwi_DigitalInputs[7].13	:= NOT w_im8IOstatus.13	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:126	AMS MAIN SUPPLY FAIL	*)
+GVL1.Pwi_DigitalInputs[7].14	:= NOT w_im8IOstatus.14	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:127	AMS EMG SUPPLY FAIL	*)
+GVL1.Pwi_DigitalInputs[7].15	:= NOT w_im8IOstatus.15	AND NOT GVL1.hwo_digitalAlarms[12].7	;	(*	DI:128	AMS PANEL ALARM MUTE	*)
+//Digital input module1  MP- S3306: 16CH							
+GVL1.Pwi_DigitalInputs[8].0	:= NOT w_im9IOstatus.0	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:129	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].1	:= NOT w_im9IOstatus.1	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:130	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].2	:= NOT w_im9IOstatus.2	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:131	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].3	:= NOT w_im9IOstatus.3	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:132	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].4	:= NOT w_im9IOstatus.4	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:133	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].5	:= NOT w_im9IOstatus.5	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:134	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].6	:= NOT w_im9IOstatus.6	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:135	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].7	:= NOT w_im9IOstatus.7	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:136	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].8	:= NOT w_im9IOstatus.8	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:137	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].9	:= NOT w_im9IOstatus.9	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:138	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].10	:= NOT w_im9IOstatus.10	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:139	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].11	:= NOT w_im9IOstatus.11	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:140	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].12	:= NOT w_im9IOstatus.12	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:141	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].13	:= NOT w_im9IOstatus.13	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:142	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].14	:= NOT w_im9IOstatus.14	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:143	SPARE	*)
+GVL1.Pwi_DigitalInputs[8].15	:= NOT w_im9IOstatus.15	AND NOT GVL1.hwo_digitalAlarms[12].8	;	(*	DI:144	SPARE	*)
+
+						
+//Communication alarms - Soft channel: 16Ch					
+GVL1.Pwi_DigitalInputs[12].0	 := NOT ton_blink11.Q	;	(*	JB1 DI MODULE COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].1	 := NOT ton_blink12.Q	;	(*	JB2 DI MODULE COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].2	 := NOT ton_blink13.Q	;	(*	JB3 DI MODULE COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].3	 := NOT ton_blink14.Q	;	(*	JB4 DI MODULE COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].4	 := NOT ton_blink15.Q	;	(*	JB5 DI MODULE COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].5	 := NOT ton_blink16.Q	;	(*	JB6 DI MODULE COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].6	 := NOT ton_blink17.Q	;	(*	WH DI MODULE COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].7	 := NOT ton_blink18.Q	;	(*	MP DI1 MODULE COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].8	 := NOT ton_blink19.Q	;	(*	MP DI2 MODULE COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].9	 := NOT ton_blink20.Q	;	(*	MP DO MODULE COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].10	 := NOT ton_blink21.Q	;	(*	MP AI MODULE COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].11	 := commCheck1.Lbo_ComErr1	;	(*	ECR HMI COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].12	 := commCheck1.Lbo_ComErr2	;	(*	WH HMI COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].13	 := commCheck1.Lbo_ComErr3	;	(*	MESS HMI COMMS: FAIL	*)
+GVL1.Pwi_DigitalInputs[12].14	 := 0	;			
+GVL1.Pwi_DigitalInputs[12].15	 := 0	;			
+			
+(*Shore mode interlock for doors*)
+lwi_interlocks[0].14 	:= GVL1.hxi_inhbit_doors;
+lwi_interlocks[0].15	:= GVL1.hxi_inhbit_doors;
+lwi_interlocks[3].15	:= GVL1.hxi_inhbit_doors;
+lwi_interlocks[4].14	:= GVL1.hxi_inhbit_doors;
+lwi_interlocks[4].15	:= GVL1.hxi_inhbit_doors;
+lwi_interlocks[5].15	:= GVL1.hxi_inhbit_doors;
+
+
+//Digital output module1 - S3303E: 16Ch	
+poweron_ton(IN:=TRUE , PT:=T#10S , Q=> , ET=> );
+w_om1IOStatus.0	 := comAlarm3.LDo_Accoustic1 AND poweron_ton.Q AND Delay_ton.Q;	(*	BUZZER WITH IND CHIEF ENG ROOM	*)	
+Delay_ton(IN:=comAlarm.LDo_Accoustic1 , PT:=T#180S , Q=> , ET=> );
+w_om1IOStatus.1	 := comAlarm1.LDo_Accoustic1 AND poweron_ton.Q;	(*	BUZZER WITH IND WHEEL HOUSE	*)
+w_om1IOStatus.2	 := comAlarm2.LDo_Accoustic1 AND poweron_ton.Q;	(*	BUZZER WITH IND MESS ROOM	*)
+w_om1IOStatus.3	 := comAlarm.LDo_Accoustic1 AND poweron_ton.Q;	(*	VISUAL & AUDIO ALARM BUZZER ENG: ROOM	*)
+w_om1IOStatus.4	 := comAlarm.LDo_Accoustic1 AND poweron_ton.Q;	(*	VISUAL & AUDIO ALARM BUZZER GEN: ROOM	*)
+w_om1IOStatus.5	 := comAlarm.LDo_Accoustic1 AND poweron_ton.Q;	(*	VISUAL & AUDIO ALARM BUZZER PUMP: ROOM	*)
+
+(*	GREY WATER TANK LOW AUTO STOP GREY WATER PUMP PUMP	*)
+w_om1IOStatus.6	 := GVL1.pwo_digitalOutputs[1].6	;	
+IF GVL1.hwo_analogAlm[11].1 AND NOT GVL1.hwi_override.0 
+THEN GVL1.pwo_digitalOutputs[1].6:= 1; ELSE GVL1.pwo_digitalOutputs[1].6:=0;	END_IF
+
+(*	FUEL TANK LOW AUTO STOP FO PUMP	*)
+w_om1IOStatus.7	 := GVL1.pwo_digitalOutputs[1].7	;	
+IF (GVL1.hwo_analogAlm[0].2 AND NOT GVL1.hwi_override.1)OR
+( GVL1.hwo_analogAlm[1].2 AND NOT GVL1.hwi_override.2)OR
+(GVL1.hwo_analogAlm[2].2 AND NOT GVL1.hwi_override.3)
+THEN GVL1.pwo_digitalOutputs[1].7:= 1; ELSE GVL1.pwo_digitalOutputs[1].7:=0;	END_IF
+
+(*	BT LOW OIL LEVEL / HIGH TEMP OUTPUT = engine sd	*)
+w_om1IOStatus.8:= GVL1.pwo_digitalOutputs[1].8	;
+ton_enginesd(IN:= GVL1.hwo_digitalAlarms[3].8 AND NOT overide_out, PT:= T#30S , Q=> , ET=> GVL1.enginesd_cd);
+IF GVL1.hwo_digitalAlarms[3].8 AND (GVL1.hxi_enginesd_overide OR overide_out) THEN overide_out:=1 ;ELSE overide_out:=0; END_IF
+IF (GVL1.hwo_digitalAlarms[3].8 OR GVL1.hwo_digitalAlarms[3].9) AND 
+(GVL1.hxi_enginesd_accept OR GVL1.pwo_digitalOutputs[1].8 OR ton_enginesd.Q)
+THEN GVL1.pwo_digitalOutputs[1].8:=1; ELSE GVL1.pwo_digitalOutputs[1].8:=0; END_IF
+
+(*	SLOPE TK LOW AUTO STOP SLUDGE PUMP *)
+w_om1IOStatus.9	 := GVL1.pwo_digitalOutputs[1].9	;	
+IF GVL1.hwo_analogAlm[10].1 AND NOT GVL1.hwi_override.4 
+THEN GVL1.pwo_digitalOutputs[1].9:= 1; ELSE GVL1.pwo_digitalOutputs[1].9:=0;	END_IF
+
+(*	FODS HIGH AUTO STOP-1 TO FO PURIFIER 	*)
+w_om1IOStatus.10	 := GVL1.pwo_digitalOutputs[1].10	;	
+IF (GVL1.hwo_analogAlm[8].2 AND NOT GVL1.hwi_override.5) OR (GVL1.hwo_analogAlm[9].2 AND NOT GVL1.hwi_override.6)
+THEN GVL1.pwo_digitalOutputs[1].10:= 1; ELSE GVL1.pwo_digitalOutputs[1].10:=0;	END_IF
+
+(*	FODS HIGH AUTO STOP-2 TO FO PURIFIER 	*)
+w_om1IOStatus.11:= GVL1.pwo_digitalOutputs[1].11	;	
+IF (GVL1.hwo_analogAlm[8].2 AND NOT GVL1.hwi_override.5) OR (GVL1.hwo_analogAlm[9].2 AND NOT GVL1.hwi_override.6)
+THEN GVL1.pwo_digitalOutputs[1].11:= 1; ELSE GVL1.pwo_digitalOutputs[1].11:=0;	END_IF
+
+w_om1IOStatus.12 := GVL1.pwo_digitalOutputs[1].12	;	(*	SPARE	*)
+w_om1IOStatus.13 := GVL1.pwo_digitalOutputs[1].13	;	(*	SPARE	*)
+w_om1IOStatus.14 := GVL1.pwo_digitalOutputs[1].14	;	(*	SPARE	*)
+w_om1IOStatus.15 := GVL1.pwo_digitalOutputs[1].15	;	(*	SPARE	*)
+
+
+
+//Analog input module1 - S3103: 12Ch								
+IF NOT GVL1.hwo_digitalAlarms[12].10 THEN								
+GVL1.pwi_analogInput[0]	:= w_aim1ch1	;	(*	AI:01	FUEL OIL TANK PORT 1P	*)		
+GVL1.pwi_analogInput[1]	:= w_aim1ch2	;	(*	AI:02	FUEL OIL TANK STBD 1S	*)		
+GVL1.pwi_analogInput[2]	:= w_aim1ch3	;	(*	AI:03	FUEL OIL TANK PORT 2C	*)		
+GVL1.pwi_analogInput[3]	:= w_aim1ch4	;	(*	AI:04	FRESH WATER TANK 1C	*)		
+GVL1.pwi_analogInput[4]	:= w_aim1ch5	;	(*	AI:05	FRESH WATER TANK 2C	*)		
+GVL1.pwi_analogInput[5]	:= w_aim1ch6	;	(*	AI:06	FRESH WATER TANK 3C	*)		
+GVL1.pwi_analogInput[6]	:= w_aim1ch7	;	(*	AI:07	BILGE HOLDING TANK	*)		
+GVL1.pwi_analogInput[7]	:= w_aim1ch8	;	(*	AI:08	BLACK WATER TANK	*)		
+GVL1.pwi_analogInput[8]	:= w_aim1ch9	;	(*	AI:09	FODS TANK PORT	*)		
+GVL1.pwi_analogInput[9]	:= w_aim1ch10	;	(*	AI:10	FODS TANK STDB	*)		
+GVL1.pwi_analogInput[10]	:= w_aim1ch11	;	(*	AI:11	SLOPE TANK 	*)		
+GVL1.pwi_analogInput[11]	:= w_aim1ch12	;	(*	AI:12	GREY WATER TANK 	*)		
+GVL1.pwi_analogInput[12]	:= w_aim1ch13	;	(*	AI:13	SPARE	*)		
+GVL1.pwi_analogInput[13]	:= w_aim1ch14	;	(*	AI:14	SPARE	*)		
+GVL1.pwi_analogInput[14]	:= w_aim1ch15	;	(*	AI:15	SPARE	*)		
+GVL1.pwi_analogInput[15]	:= w_aim1ch16	;	(*	AI:16	SPARE	*)		
+								
+ELSE								
+GVL1.pwi_analogInput[0]	:= 0;							
+GVL1.pwi_analogInput[1]	:= 0;							
+GVL1.pwi_analogInput[2]	:= 0;							
+GVL1.pwi_analogInput[3]	:= 0;							
+GVL1.pwi_analogInput[4]	:= 0;							
+GVL1.pwi_analogInput[5]	:= 0;							
+GVL1.pwi_analogInput[6]	:= 0;							
+GVL1.pwi_analogInput[7]	:= 0;							
+GVL1.pwi_analogInput[8]	:= 0;							
+GVL1.pwi_analogInput[9]	:= 0;							
+GVL1.pwi_analogInput[10]	:= 0;							
+GVL1.pwi_analogInput[11]	:= 0;							
+GVL1.pwi_analogInput[12]	:= 0;							
+GVL1.pwi_analogInput[13]	:= 0;							
+GVL1.pwi_analogInput[14]	:= 0;							
+GVL1.pwi_analogInput[15]	:= 0;							
+								
+END_IF								
+					
+
