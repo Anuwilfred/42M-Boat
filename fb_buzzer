@@ -1,0 +1,45 @@
+FUNCTION_BLOCK fb_buzzer
+VAR_INPUT
+	Lwi_AlarmBuzzer: WORD;
+	Lwi_AlarmInd: WORD;
+	LDi_Ack: BOOL;
+END_VAR
+VAR_OUTPUT
+	LDo_Acoustic: BOOL;
+	LDo_Visual: BOOL;
+END_VAR
+VAR
+	AlarmBuzzer: BOOL;
+	AlarmInd: BOOL;
+	TONblink: TON;
+	TPblink: TP;
+END_VAR
+
+
+IF Lwi_AlarmBuzzer.0 OR Lwi_AlarmBuzzer.1 OR Lwi_AlarmBuzzer.2 OR Lwi_AlarmBuzzer.3 OR Lwi_AlarmBuzzer.4 OR Lwi_AlarmBuzzer.5 OR Lwi_AlarmBuzzer.6 OR Lwi_AlarmBuzzer.7
+OR Lwi_AlarmBuzzer.8 OR Lwi_AlarmBuzzer.9 OR Lwi_AlarmBuzzer.10 OR Lwi_AlarmBuzzer.11 OR Lwi_AlarmBuzzer.12 OR Lwi_AlarmBuzzer.13
+OR Lwi_AlarmBuzzer.14 OR Lwi_AlarmBuzzer.15 THEN
+AlarmBuzzer:= 1;
+ELSE
+AlarmBuzzer:= 0;
+END_IF
+
+IF Lwi_AlarmInd.0 OR Lwi_AlarmInd.1 OR Lwi_AlarmInd.2 OR Lwi_AlarmInd.3 OR Lwi_AlarmInd.4 OR Lwi_AlarmInd.5 OR Lwi_AlarmInd.6 OR Lwi_AlarmInd.7
+OR Lwi_AlarmInd.8 OR Lwi_AlarmInd.9 OR Lwi_AlarmInd.10 OR Lwi_AlarmInd.11 OR Lwi_AlarmInd.12 OR Lwi_AlarmInd.13
+OR Lwi_AlarmInd.14 OR Lwi_AlarmInd.15 THEN
+AlarmInd:= 1;
+ELSE
+AlarmInd:= 0;
+END_IF
+
+IF (AlarmBuzzer OR LDo_Acoustic) AND NOT LDi_Ack THEN
+LDo_Acoustic	:=	1;
+ELSE
+LDo_Acoustic	:=	0;
+END_IF
+
+TONblink(IN:=NOT TPblink.Q AND LDo_Acoustic , PT:=T#1s , Q=> , ET=> );
+
+TPblink(IN:=TONblink.Q AND LDo_Acoustic , PT:= T#1s, Q=> , ET=> );
+
+LDo_Visual	:=	AlarmInd AND NOT TPblink.Q;
